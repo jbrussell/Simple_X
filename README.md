@@ -10,6 +10,6 @@ Although Perple_X includes thermodynamic parameters and solutions from many diff
 #### Version info
 The codes were tested using Mac-OS-X 10.12.2
 
-Data files: [Perple_X_6.8.7_data_files.zip](./archive/Perple_X_6.8.7_data_files.zip)
+Data files: [Perple_X_6.8.7_data_files.zip](./_archive/Perple_X_6.8.7_data_files.zip)
 
-Executables: [Perple_X_6.8.7_OSX_O1_optimization_Intel64_core2duo_JS_Oct_22_2019.zip](./archive/Perple_X_6.8.7_OSX_O1_optimization_Intel64_core2duo_JS_Oct_22_2019.zip)
+Executables: [Perple_X_6.8.7_OSX_O1_optimization_Intel64_core2duo_JS_Oct_22_2019.zip](./_archive/Perple_X_6.8.7_OSX_O1_optimization_Intel64_core2duo_JS_Oct_22_2019.zip)
