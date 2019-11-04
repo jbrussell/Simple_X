@@ -5,7 +5,7 @@ This wrapper is extremely limited in its capabilities and was built for the spec
 
 Although Perple_X includes thermodynamic parameters and solutions from many different studies, this wrapper has only been tested using the data from [Stixrude and Lithgow-bertelloni (2011)](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-246X.2010.04890.x) ([stx11ver.dat](./data_files/stx11ver.dat)). The MATALB scripts are ordered a1–c1 and should be run in that order.
 
-![](./_archive/example.png)
+![](./_archive/example1.png)
 
 
 #### Version info
