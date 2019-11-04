@@ -1,0 +1,87 @@
+
+Perple_X version 6.8.7, source updated Oct 22, 2019.
+
+Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+
+Enter the project or plot file name [i.e., without the .plt suffix]:
+
+Warning: the plot option file: perplex_plot_option.dat                 
+was not found, default option values will be used.
+
+
+Perple_X plot options are currently set as:
+
+    Keyword:               Value:     Permitted values [default]:
+    axis_label_scale       1.20       [1.2] (rel)
+    bounding_box :
+                               0      [0] x-min (pts)
+                               0      [0] y-min (pts)
+                             800      [800] x-length (pts)
+                             800      [800] y-length (pts)
+    field_fill             T          [T] F
+    field_label            T          [T] F
+    field_label_scale      0.72       [0.72] (rel)
+    font                   Helvetica                               
+    grid                   F          [F] T
+    half_ticks             T          [T] F
+    line_width             1.00       0-99 [1.] (pts)
+    picture_transformation :
+                            0.180     [0.18] x-scale (rel)
+                            0.180     [0.18] y-scale (rel)
+                             160.     [0.18] x-translation (pts)
+                             220.     [0.18] y-translation (pts)
+                             0.00     [0.0]  rotation (deg)
+    plot_aspect_ratio      1.000      [1.0] x_axis_length/y_axis_length
+    replicate_label        0.025      0->1 [0.025]
+    splines                T          [T] F
+    tenth_ticks            F          [F] T
+    text_scale             1.000      [1.] (rel)
+
+To change these options edit or create the plot option file
+See: www.perplex.ethz.ch/perplex_plot_options.html
+
+
+PostScript will be written to file: stx11_1.ps                                                                                          
+
+Modify the default plot (y/n)?
+
+Modify drafting options (y/n)?
+  answer yes to modify:
+   - x-y plotting limits
+   - axes numbering
+
+Modify x-y limits (y/n)? 
+
+Restrict phase fields by variance (y/n)?
+  answer yes to:
+   - suppress pseudounivariant curves and/or pseudoinvariant points of
+     a specified true variance.
+
+Restrict phase fields by phase identities (y/n)?
+  answer yes to:
+   - show fields that contain a specific assemblage
+   - show fields that do not contain specified phases
+   - show fields that contain any of a set of specified phases 
+
+Modify default equilibrium labeling (y/n)?
+  answer yes to:
+   - modify/suppress [pseudo-] univariant curve labels
+   - suppress [pseudo-] invariant point labels
+
+**warning ver061** the data includes NaN values, probably because bad_number
+in perplex_option.dat = NaN, these values will be replaced by zeros. To avoid 
+this behavior set bad_number to a numeric value or use a plotting program capable
+of handling NaNs, e.g., MatLab or PYWERAMI.
+
+program/routine: PSCURV/PSVDRAW
+
+
+Modify default axes numbering (y/n)?
+
+Enter the starting value and interval for major tick marks on
+the X-axis ( current values are:  373.      266.    )
+Enter the new values:
+
+Enter the starting value and interval for major tick marks on
+the Y-axis ( current values are: 0.147      13.2    )
+Enter the new values:

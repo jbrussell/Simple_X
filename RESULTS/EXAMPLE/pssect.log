@@ -1,0 +1,54 @@
+
+Perple_X version 6.8.7, source updated Oct 22, 2019.
+
+Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+
+Enter the project name (the name assigned in BUILD) [default = my_project]:
+
+Reading Perple_X options from: perplex_option.dat                                                                                  
+
+
+
+Warning: the plot option file: perplex_plot_option.dat                 
+was not found, default option values will be used.
+
+
+Perple_X plot options are currently set as:
+
+    Keyword:               Value:     Permitted values [default]:
+    axis_label_scale       1.20       [1.2] (rel)
+    bounding_box :
+                               0      [0] x-min (pts)
+                               0      [0] y-min (pts)
+                             800      [800] x-length (pts)
+                             800      [800] y-length (pts)
+    field_fill             T          [T] F
+    field_label            T          [T] F
+    field_label_scale      0.72       [0.72] (rel)
+    font                   Helvetica                               
+    grid                   F          [F] T
+    half_ticks             T          [T] F
+    line_width             1.00       0-99 [1.] (pts)
+    picture_transformation :
+                            0.180     [0.18] x-scale (rel)
+                            0.180     [0.18] y-scale (rel)
+                             160.     [0.18] x-translation (pts)
+                             220.     [0.18] y-translation (pts)
+                             0.00     [0.0]  rotation (deg)
+    plot_aspect_ratio      1.000      [1.0] x_axis_length/y_axis_length
+    replicate_label        0.025      0->1 [0.025]
+    splines                T          [T] F
+    tenth_ticks            F          [F] T
+    text_scale             1.000      [1.] (rel)
+
+To change these options edit or create the plot option file
+See: www.perplex.ethz.ch/perplex_plot_options.html
+
+
+PostScript will be written to file: stx11.ps                                                                                            
+Modify the default plot (y/n)?
+There are   3 fields for: Pl Sp O Opx Cpx Cpx
+There are  38 fields for: C2/c O Opx Cpx Cpx Gt
+There are  46 fields for: Sp O Opx Cpx Gt
+There are  15 fields for: Pl Sp O Opx Cpx
+There are   6 fields for: Pl Pl O Opx Cpx q

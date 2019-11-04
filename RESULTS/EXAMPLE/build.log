@@ -1,0 +1,107 @@
+
+Perple_X version 6.8.7, source updated Oct 22, 2019.
+
+Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+
+
+NO is the default (blank) answer to all Y/N prompts
+
+
+Enter a name for this project (the name will be used as the
+root for all output file names) [default = my_project]:
+
+The problem definition file will be named: stx11.dat                                                                                           
+
+Enter thermodynamic data file name [default = hp02ver.dat]:
+
+Enter the computational option file name [default = perplex_option.dat]:
+See: www.perplex.ethz.ch/perplex_options.html
+
+Reading Perple_X options from: perplex_option.dat                                                                                  
+
+The current data base components are:
+ NA2O  MGO   AL2O3 SIO2  CAO   FEO  
+Transform them (Y/N)? 
+Specify computational mode:
+
+     1 - Convex-Hull minimization
+     2 - Constrained minimization on a 2d grid [default]
+     3 - Constrained minimization on a 1d grid
+     4 - Output pseudocompound data
+     5 - 1-d Phase fractionation
+     6 - 0-d Infiltration-reaction-fractionation
+     7 - 2-d Phase fractionation (FRAC2D and TITRATE reactive transport models)
+
+Use Convex-Hull minimization for Schreinemakers projections or phase diagrams
+with > 2 independent variables. Use constrained minimization for phase diagrams
+or phase diagram sections with < 3 independent variables.
+
+Calculations with saturated components (Y/N)?
+
+Use chemical potentials, activities or fugacities as independent
+variables (Y/N)?
+
+Select thermodynamic components from the set:
+ NA2O  MGO   AL2O3 SIO2  CAO   FEO  
+Enter names, 1 per line, press <enter> to finish:
+
+The data base has P(bar)   and T(K)     as default independent potentials.
+Make one dependent on the other, e.g., as along a geothermal gradient (y/n)? 
+
+Select x-axis variable:
+     1 - P(bar)  
+     2 - T(K)    
+     3 - Composition X_C1* (user defined)
+
+*X_C1 can not be selected as the y-axis variable
+
+
+Enter minimum and maximum values, respectively, for: T(K)    
+
+Enter minimum and maximum values, respectively, for: P(bar)  
+
+For gridded minimization, grid resolution is determined by the number of levels
+(grid_levels) and the resolution at the lowest level in the X- and Y-directions (x_nodes
+and y_nodes) these parameters are currently set for the exploratory and autorefine cycles
+as follows:
+
+stage        grid_levels  xnodes  ynodes    effective resolution
+exploratory       1          60      60        60 x  60 nodes
+auto-refine       4          60      60       473 x 473 nodes
+
+To change these options edit or create the file perplex_option.dat                                                                                  
+See: www.perplex.ethz.ch/perplex_options.html#grid_parameters
+
+
+Specify component amounts by mass (Y/N)?
+
+The amounts you enter next need not be normalized; regardless of units, they
+define the molar amount of the system
+
+
+Enter the mass  amounts of the components:
+ SIO2  AL2O3 FEO   MGO   CAO   NA2O 
+for the bulk composition of interest:
+
+Output a print file (Y/N)?
+  
+
+Exclude pure and/or endmember phases (Y/N)?
+Do you want to be prompted for phases (Y/N)?
+Enter names, 1 per line, press <enter> to finish:
+
+Include solution models (Y/N)?
+Enter the solution model file name [default = solution_model.dat]: 
+
+
+Select models from the following list, enter 1 per line, press <enter> to finish
+
+  C2/c        Wus         Pv          Pl          Sp          O         
+  Wad         Ring        Opx         Cpx         Aki         Gt        
+  Gt_maj      Ppv         CF        
+
+For details on these models see: www.perplex.ethz.ch/perplex_solution_model_glossary.html
+or read the commentary in the solution model file.
+
+
+Enter calculation title:

@@ -1,0 +1,38 @@
+stx11
+stx11ver.dat
+perplex_option.dat
+n
+2
+n
+n
+SIO2
+AL2O3
+FEO
+MGO
+CAO
+NA2O
+
+n
+2
+373.000000 1873.000000
+1.000000 80000.000000
+y
+45.180000 4.420000 7.630000 38.960000 3.410000 0.400000 
+n
+y
+n
+ky
+cor
+
+y
+stx11_solution_model.dat
+Opx
+Cpx
+O
+Sp
+Gt
+Pl
+C2/c
+Ring
+
+Staudigel closed system model

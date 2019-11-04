@@ -3,22 +3,15 @@
 %
 % JBR - 11/19
 clear; close all;
-%% ===================================================================== %%
-%                               USER INPUT                                %
-%  =====================================================================  %
-% Define half-space cooling parameters
-age = 70; % [Myr] seafloor age
-Tp = 1350; % [C] Mantle potential temperature
 
-%  =====================================================================  %
-%                             END USER INPUT                              %
-%  =====================================================================  %
 %% ========================================================================
 %  ========================================================================
 setup_parameters;
 PROJ_path = parameters.PROJ_path;
 thermo_dat = parameters.thermo_dat;
 workingDir = parameters.workingDir;
+age = parameters.age_Ma;
+Tp = parameters.Tp_C;
 
 % Clear .tab files
 if ~isempty(dir([PROJ_path,thermo_dat,'*.tab']))

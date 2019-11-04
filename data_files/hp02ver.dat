@@ -1,5 +1,5 @@
 
- | for domcumentation of Perple_X thermodynamic data file structure and content refer to:
+ | for documentation of Perple_X thermodynamic data file structure and content refer to:
 
  | www.perplex.ethz.ch/perplex_thermodynamic_data_file.html
 
@@ -44,9 +44,9 @@ end_special_components
                                                                                                                                             
 begin_makes                                                                                                                                 
                                 | the make definitions segment of the thermodynamic
-                                | data file is preceeded by the "begin_makes" keyword,
+                                | data file is preceded by the "begin_makes" keyword,
                                 | and terminated by the "end_makes" keyword. Within 
-                                | this segment comments must be preceeded by a "|" 
+                                | this segment comments must be preceded by a "|" 
                                 | character. 
 
                                 | the make definitions define new thermodynamic entities
@@ -146,15 +146,15 @@ fatg = 1 atg - 16 ta + 16 fta
 atgts = 4 clin + 9/17 atg - 24/17 br      | Tshermaks antigorite for Atg(PN) model (Padrón-Navarta et al., 2013, Lithos)
 -2e3 46.1 0
 
-| ettore's makes:
-| odo_ef = 1/2 mag 1/2 cc 
-| -1000. 0 0 
-| oank = 1/4 sid 1/2 cc 1/4 mag 
-|  -750 0 0 
+| ettore's makes for oCcM(EF):
+odo = 1/2 mag 1/2 cc 
+-1000. 0 0 
+oank = 1/4 sid 1/2 cc 1/4 mag 
+-750 0 0 
 
 
- | odo = 1/2 mag + 1/2 cc          | ordered dolmite species for H&P dolomite model
- | -13.5d3 0 0 
+| odo = 1/2 mag + 1/2 cc        | ordered dolmite species for H&P dolomite model
+| -13.5d3 0 0 
                                 | endmembers for the melt(HP) model, the dqf corrections
                                 | made in the solution model could be applied here, but 
                                 | should not be done in both the thermodynamic data file 
@@ -506,7 +506,6 @@ c1 = 233.3 c2 = .1494E-2 c3 = -603800 c5 = -1869.7
 b1 = .613E-4 b5 = -.613E-3 b6 = 1250000. b7 = -187.5 b8 = 4  
 m0 = 810000 m1 = 1.82 m2 = -140  
 end
-
  
 fa       EoS = 2 | H= -1478160.                                                                   
 SIO2(1)FEO(2)
@@ -2559,4 +2558,3 @@ end
 |V0 = .342  
 |b1 = .54E-5 b5 = -.54E-4 b6 = 4420000 b8 = 4  
 |end
-
