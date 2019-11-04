@@ -14,7 +14,7 @@ clear;
 % Physical property of interest
 prop = 'vs';
 
-is_plot_sum = 0; % plot cumulative sum of modes?
+is_plot_sum = 1; % plot cumulative sum of modes?
 
 %  =====================================================================  %
 %                             END USER INPUT                              %
@@ -53,19 +53,20 @@ ylabel('Depth (km)');
 ylim([0 max(prop_mat.depth/1000)]);
 xlim([min(prop_mat.T) max(prop_mat.T)]);
 title([num2str(age),' Ma; ',num2str(Tp),' \circ','C']);
-set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse');
-
+set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse','Layer','top');
+grid on;
 
 subplot(1,3,2);
 plot(prop_mat.(prop),prop_mat.depth/1000,'-k','linewidth',2); hold on;
 xlabel([prop,' (km/s)']);
 ylim([0 max(prop_mat.depth/1000)]);
 xlim([min(prop_mat.(prop))*0.99 max(prop_mat.(prop))*1.01]);
-set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse');
+set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse','Layer','top');
+grid on;
 
 subplot(1,3,3);
 % clrs = brewermap(length(mode_mat.names),'set1');
-clrs = lines(length(names));
+clrs = lines(length(mode_mat.names));
 lgd={};
 for jj = 1:length(mode_mat.names)
     plot(mode_mat.modes(jj,:),prop_mat.depth/1000,'-','color',clrs(jj,:),'linewidth',LW); hold on;
@@ -85,8 +86,8 @@ pos3 = get(gca,'Position');
 lg = legend(lgd,'Location','eastoutside');
 set(gca,'Position',pos3);
 xticks([0:20:100]);
-set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse');
-
+set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse','Layer','top');
+grid on;
 
 if ~exist([PROJ_path,'figs/'])
     mkdir([PROJ_path,'figs/']);

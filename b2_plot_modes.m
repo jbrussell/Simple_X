@@ -12,7 +12,7 @@ clear;
 %                               USER INPUT                                %
 %  =====================================================================  %
 
-is_plot_sum = 0; % plot cumulative sum of modes?
+is_plot_sum = 1; % plot cumulative sum of modes?
 
 modes_order = {'O' 'Cpx' 'Opx' 'Gt' 'Pl'}; % leave empty for automatic ordering;
 %  =====================================================================  %
@@ -106,7 +106,7 @@ xlim([min(P) max(P)])
 ylim(ylims);
 legend(lgd,'Location','eastoutside');
 set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','layer','top');
-
+grid on;
 
 if ~exist([PROJ_path,'figs/'])
     mkdir([PROJ_path,'figs/']);

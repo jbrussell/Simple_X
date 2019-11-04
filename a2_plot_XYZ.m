@@ -7,7 +7,7 @@ clear; close all;
 %                               USER INPUT                                %
 %  =====================================================================  %
 % Physical property of interest
-prop = 'vs';
+prop = 'vp';
 
 %  =====================================================================  %
 %                             END USER INPUT                              %
@@ -83,6 +83,7 @@ ylim([0 max(depth/1000)]);
 xlim([min(T) max(T)]);
 title([num2str(age),' Ma; ',num2str(Tp),' \circ','C']);
 set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse');
+grid on;
 
 subplot(1,2,2);
 plot(Z,depth/1000,'-k','linewidth',2); hold on;
@@ -90,6 +91,7 @@ xlabel(zname);
 ylim([0 max(depth/1000)]);
 xlim([min(Z)*0.99 max(Z)*1.01]);
 set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse');
+grid on;
 
 if ~exist([PROJ_path,'figs/'])
     mkdir([PROJ_path,'figs/']);
