@@ -3,7 +3,14 @@
 
 This wrapper is extremely limited in its capabilities and was built for the specific purpose of calculating seismic velocities (Vp & Vs) and density along given pressure-temperature paths. Simply input bulk composition, desired phases (and undesired endmembers, if any), and a temperature and pressure range over which to calculate the phase diagram. A P-T path is calculated assuming half-space cooling and used to extract physical properties from 2-D grid of (P,T,Z) values.
 
-Although Perple_X includes thermodynamic parameters and solutions from many different studies, this wrapper has only been tested using the data from [Stixrude and Lithgow-bertelloni (2011)](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-246X.2010.04890.x) ([stx11ver.dat](./data_files/stx11ver.dat)). The MATALB scripts are meant to be executed in alphanumeric order.
+Although Perple_X includes thermodynamic parameters and solutions from many different studies, this wrapper has only been tested using the data from [Stixrude and Lithgow-bertelloni (2011)](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-246X.2010.04890.x) ([stx11ver.dat](./data_files/stx11ver.dat)).
+
+The MATALB scripts are meant to be executed in alphanumeric order:
+- a1_run_Perple_X.m
+- a2_plot_XYZ.m
+- b1_run_Perple_X_PTmodes.m
+- b2_plot_modes.m
+- c1_plot_veloc_phases.m
 
 ![](./_archive/example1.png)
 
