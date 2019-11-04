@@ -1,5 +1,5 @@
 # Simple_X
-###### A simplified MATLAB wrapper around the [Perple_X](http://www.perplex.ethz.ch/) mineral physics software package for calculating phase equilibria and physical properties in the Earth.
+#### A simplified MATLAB wrapper around the [Perple_X](http://www.perplex.ethz.ch/) mineral physics software package for calculating phase equilibria and physical properties in the Earth.
 
 This wrapper is extremely limited in its capabilities and was built for the specific purpose of calculating seismic velocities (Vp & Vs) and density along given pressure-temperature paths. Simply input bulk composition, desired phases (and undesired endmembers, if any), and a temperature and pressure range over which to calculate the phase diagram. A P-T path is calculated assuming half-space cooling and used to extract physical properties from 2-D grid of (P,T,Z) values.
 
