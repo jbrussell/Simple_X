@@ -22,9 +22,9 @@ Perple_X computational option settings for WERAMI:
     logarithmic_p          F          [F] T
     bad_number             NaN        [NaN]
     composition_constant   F          [F] T
-    composition_phase      wt         [mol] wt
+    composition_phase      mol        [mol] wt
     composition_system     wt         [wt] mol
-    proportions            wt         [vol] wt mol
+    proportions            vol        [vol] wt mol
     absolute               F          [F] T
     cumulative             F          [F] T
     fancy_cumulative_modes T          [F] T
@@ -138,8 +138,8 @@ inconsistent properties by setting the option warning_ver637 to F and restarting
 Data ranges excluding values equal to bad_number (       NaN) specified in perplex_option.dat:
 
      Pl             Pl             O              Cpx            Cpx            q              Opx            Gt             C2/c           Ring           Sp            
-min   0.606483        3.13831        58.9052        6.18601        1.17158       0.100000E+100  0.147177        2.50604       0.100000E+100  0.100000E+100  0.100000E+100
-max    5.22413        8.80892        65.9828        24.7677        4.03851      -0.100000E+100   13.2225        16.6557      -0.100000E+100 -0.100000E+100 -0.100000E+100
+min   0.736968        3.95295        60.3342        6.13071        1.20131       0.100000E+100  0.149676        1.96989       0.100000E+100  0.100000E+100  0.100000E+100
+max    6.21184        10.3546        64.4626        25.4082        4.14894      -0.100000E+100   12.9805        15.4333      -0.100000E+100 -0.100000E+100 -0.100000E+100
 
 Output has been written to two files:
 

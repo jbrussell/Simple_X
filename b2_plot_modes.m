@@ -101,7 +101,7 @@ else
     figname = ['b2_modes.pdf'];
 end
 xlabel('P (GPa)');
-ylabel('Wt. %');
+ylabel('Vol. %');
 xlim([min(P) max(P)])
 ylim(ylims);
 legend(lgd,'Location','eastoutside');

@@ -45,7 +45,7 @@ bad_number                default | [NaN] any number or NaN (not-a-number)
 bounds                    default | [VRH] VRH or HS; Voigt-Reuss-Hill or Hashin-Shtrikman, see vrh/hs_averaging
 closed_c_space            default | [T] T => closed composition space for gridded minimization
 composition_constant      default | [F] allow constants in composition expressions
-composition_phase         wt      | [mol] mol or wt (mass) phase compositions in WERAMI output
+composition_phase         mol     | [mol] mol or wt (mass) phase compositions in WERAMI output
 composition_system        wt      | [wt] mol or wt; system composition in WERAMI mode 2-4 output
 console_messages          default | [on] off => suppresses most console messages (warnings, errors, etc)
 cumulative                default | [F] WERAMI, computational mode 3, property choice #36 only!- cumulative component amounts (for fractionation problems)
@@ -81,7 +81,7 @@ pause_on_error            default | [T] T => wait for user response after errors
 pc_perturbation           default | [5d-3] pseudo-compound composition perturbation; only relevant for CONVEX
 poisson_ratio             default | [on 0.35] value 1: on, off or all; value 2: 0->0.5; controls use of poisson ratio estimates for shear moduli
 poisson_test              default | [F] T => use poisson ratio to check for valid results
-proportions               wt      | [vol] vol, wt, or mol; volume, weight (mass), or molar phase proportions
+proportions               vol     | [vol] vol, wt, or mol; volume, weight (mass), or molar phase proportions
 pseudocompound_file       default | [F] echo static pseudocompound compositions to my_project_pseudocompound_list.txt
 reach_increment_switch    default | [on] all, on, off; VERTEX => on activates reach_increments only during auto_refine; MEEMUM default is [all]
 reaction_format           default | [minimum] minimum, full, stoich, S+V, or everything

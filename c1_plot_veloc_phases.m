@@ -79,7 +79,7 @@ else
     xlims = [0 ceil(max(mode_mat.modes(:)))];
     figname = ['c1_',prop,'_modes.pdf'];
 end
-xlabel('Wt. %');
+xlabel('Vol. %');
 ylim([0 max(prop_mat.depth/1000)]);
 xlim(xlims);
 pos3 = get(gca,'Position');

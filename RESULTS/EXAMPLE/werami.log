@@ -22,9 +22,9 @@ Perple_X computational option settings for WERAMI:
     logarithmic_p          F          [F] T
     bad_number             NaN        [NaN]
     composition_constant   F          [F] T
-    composition_phase      wt         [mol] wt
+    composition_phase      mol        [mol] wt
     composition_system     wt         [wt] mol
-    proportions            wt         [vol] wt mol
+    proportions            vol        [vol] wt mol
     absolute               F          [F] T
     cumulative             F          [F] T
     fancy_cumulative_modes T          [F] T

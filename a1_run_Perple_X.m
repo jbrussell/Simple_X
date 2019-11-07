@@ -44,7 +44,7 @@ end
 % Copy data files to project folder
 system(['cp ',path2datafiles,path_thermo_dat,' ',PROJ_path]);
 system(['cp ',path2datafiles,solution_model,' ',PROJ_path]);
-system(['cp ',path2datafiles,options,' ',PROJ_path]);
+system(['cp ',options,' ',PROJ_path]);
 system(['cp setup_parameters.m ',PROJ_path]);
 
 % Check for blk file. If does not exist, must recalculate
