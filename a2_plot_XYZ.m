@@ -35,6 +35,8 @@ T_perplex=x; P_perplex=y/10000; Z_perplex=z;
 [ depth_m_path,T_K_path,P_GPa_path,density_path ] = calc_HSC( Tp+273,age );
 
 %% PLOT
+% %%
+%plot inline
 FS = 14;
 figure(1); clf;
 set(gcf,'color','w');
@@ -73,6 +75,8 @@ for jj = 1:length(T_K_path)
     depth(ii) = depth_m_path(Idepth);
 end
 
+% %%
+%plot inline
 figure(2); clf;
 set(gcf,'color','w');
 subplot(1,2,1);
@@ -100,6 +104,7 @@ export_fig(1,[PROJ_path,'figs/a2_TP_',prop,'.pdf'],'-pdf','-painters');
 save2pdf([PROJ_path,'figs/a2_',prop,'_profile.pdf'],2,100);
 
 %% Save T-P path in text file
+% %%
 filename = [PROJ_path,'TP_HSC_',num2str(age),'Ma_Tp',num2str(Tp),'.dat'];
 fid = fopen(filename,'w');
 for ii = 1:length(T)
@@ -108,6 +113,7 @@ end
 fclose(fid);
 
 %% Save mat file
+% %%
 if ~exist([PROJ_path,'matout/'])
     mkdir([PROJ_path,'matout/']);
 end

@@ -41,6 +41,8 @@ end
 mode_mat = load(mat_in);
 
 %% PLOT
+% %%
+%plot native
 FS = 14;
 LW = 2;
 figure(4); clf;

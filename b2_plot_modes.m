@@ -82,6 +82,8 @@ for jj = I_modes
 end
 
 %% PLOT
+% %%
+%plot inline
 FS = 14;
 LW = 2;
 figure(3); clf;
@@ -114,6 +116,7 @@ end
 save2pdf([PROJ_path,'figs/',figname],3,100);
 
 %% Save mat file
+% %%
 if is_plot_sum
     matout = [PROJ_path,'matout/modes_sum.mat'];
 else
