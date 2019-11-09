@@ -55,25 +55,7 @@ set(gca,'fontsize',FS,'linewidth',1,'TickDir','out','YDir','reverse');
 
 
 % Extract property along the defined T-P path
-Pind=0; Tind=0;
-T=0; P=0; Z=0; depth=0;
-ii = 0;
-for jj = 1:length(T_K_path)
-    if T_K_path(jj)<=min(T_perplex(:)) || T_K_path(jj)>=max(T_perplex(:)) || ...
-            P_GPa_path(jj)<=min(P_perplex(:)) || P_GPa_path(jj)>=max(P_perplex(:))
-        continue
-    end
-    ii = ii + 1;
-    diffmat = abs( (T_K_path(ii)-T_perplex) .* (P_GPa_path(ii)-P_perplex) );
-    minMatrix = min(diffmat(:));
-    [Pind(ii),Tind(ii)] = find(diffmat==minMatrix);
-    T(ii) = T_perplex(Pind(ii),Tind(ii));
-    P(ii) = P_perplex(Pind(ii),Tind(ii));
-    Z(ii) = Z_perplex(Pind(ii),Tind(ii));
-    
-    [~,Idepth] = min(abs(P(ii)-P_GPa_path));
-    depth(ii) = depth_m_path(Idepth);
-end
+[ P,T,Z,depth ] = extract_PTpath( P_GPa_path,T_K_path,depth_m_path,P_perplex,T_perplex,Z_perplex );
 
 % %%
 %plot inline
