@@ -43,10 +43,14 @@ for ii = I_modes(1:end-1)
         end
     end
 end
-for ii = 1:length(I_good)
-    tab_mat(I_good(ii),:) = nansum([tab_mat(I_good(ii),:); tab_mat(I_bad(ii),:)]);
+if I_good~=0 && I_bad~=0
+    for ii = 1:length(I_good)
+        tab_mat(I_good(ii),:) = nansum([tab_mat(I_good(ii),:); tab_mat(I_bad(ii),:)]);
+    end
+    I_modes = setdiff(I_modes,I_bad);
+else
+    I_modes = [3:mvar];
 end
-I_modes = setdiff(I_modes,I_bad);
 
 % Cumulative sum of collapsed modes
 if ~isempty(modes_order)
