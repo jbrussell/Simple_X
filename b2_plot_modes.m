@@ -43,7 +43,7 @@ for ii = I_modes(1:end-1)
         end
     end
 end
-if I_good~=0 && I_bad~=0
+if I_good(1)~=0 && I_bad(1)~=0
     for ii = 1:length(I_good)
         tab_mat(I_good(ii),:) = nansum([tab_mat(I_good(ii),:); tab_mat(I_bad(ii),:)]);
     end
