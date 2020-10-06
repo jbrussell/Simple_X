@@ -3,7 +3,7 @@
 
 ###### Joshua B. Russell
 
-This wrapper is extremely limited in its capabilities and was built for the specific purpose of calculating seismic velocities (Vp, Vs) and density along desired geotherms. Simply input bulk composition, components of interest (and undesired endmembers, if any), and a temperature and pressure range over which to calculate the phase diagram. A P-T path is calculated assuming half-space cooling and used to extract physical properties from 2-D grid of (P,T,Z) values.
+This wrapper is extremely limited in its capabilities and was built for the specific purpose of calculating seismic velocities (Vp, Vs) and density along desired geotherms. Simply input bulk composition, components of interest (and undesired endmembers, if any), and a temperature and pressure range over which to calculate the phase diagram. A P-T path is calculated assuming half-space cooling and used to extract physical properties from 3-D grid of (P,T,Z) values.
 
 Although Perple_X includes thermodynamic parameters and solutions from many different studies, this wrapper has only been tested using the data and solution files from [Stixrude and Lithgow-Bertelloni (2011)](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-246X.2010.04890.x) ([stx11ver.dat](./data_files/stx11ver.dat), [stx11_solution_model.dat](./data_files/stx11_solution_model.dat)).
 
