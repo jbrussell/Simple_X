@@ -13,9 +13,11 @@ parameters.Trange = [100 1600]+273; % [K]
 % Pressure range (Don't use zero! Causes code to hang)
 parameters.Prange = [1 80000]; % [bar] (1 GPa = 10,000 bars)
 
-% Define half-space cooling parameters for extracting velocities
+% Define half-space cooling or plate-cooling parameters for extracting velocities
+parameters.modeltype = 'HSC'; % 'HSC' or 'plate'
 parameters.age_Ma = 70; % [Myr] seafloor age
 parameters.Tp_C = 1350; % [C] Mantle potential temperature
+parameters.z_plate = 100; % [km] plate thickness if choose 'plate' model type
 
 % Solution options
 parameters.comps =    {'SIO2' 'AL2O3' 'FEO' 'MGO' 'CAO' 'NA2O'}; % Components of interest

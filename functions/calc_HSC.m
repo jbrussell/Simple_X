@@ -1,10 +1,12 @@
-function [ delz,Te,presG,rho ] = calc_HSC( Tp,age )
+function [ delz,Te,presG,rho ] = calc_HSC( Tp,age,spr_rate,z_max )
 % HSC from Turcotte and Schubert as implimented by Faul's scripts.
 % Assumes spreading rate of 5 cm/year by default
 %
 % INPUT
 % Tp  : Mantle potential temperature in Kelvin 
 % age : Seafloor age in Myr
+% spr_rate: Spreading rate in cm/yr
+% z_max: Maximum depth to outpu  in km
 %
 % OUTPUT
 % delz  : depth in meters
@@ -15,12 +17,13 @@ function [ delz,Te,presG,rho ] = calc_HSC( Tp,age )
 % JBR 10/24/19
 
 % age = 70; % Ma
-spr_rate = 5; % cm/yr
+% spr_rate = 5; % cm/yr
+% z_max = 400; % maximum depth in km
 dist = age *spr_rate*1e4;
 % Tp = 1623; % mantle potential temperature for geotherm, K
 
 %depth sampling, m
-delz = [(5000:2000:197000),(200000:5000:400000)]; 
+delz = [(5000:2000:197000),(200000:5000:z_max*1000)]; 
 % dk = -delz(2:length(delz))/1000; lz = length(delz);
 
 % Tr = 1173; Pr = 0.2; %reference temperature and pressure, part of fit

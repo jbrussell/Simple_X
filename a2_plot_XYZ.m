@@ -18,6 +18,8 @@ PROJ_path = parameters.PROJ_path;
 thermo_dat = parameters.thermo_dat;
 age = parameters.age_Ma;
 Tp = parameters.Tp_C;
+z_plate = parameters.z_plate;
+modeltype = parameters.modeltype;
 
 %% Setup limits
 if strcmpi(prop,'vs')
@@ -32,7 +34,13 @@ path2tab = [PROJ_path,thermo_dat,'_',prop,'.tabs'];
 T_perplex=x; P_perplex=y/10000; Z_perplex=z;
 
 %% Calculate HSC Temperature and Pressure
-[ depth_m_path,T_K_path,P_GPa_path,density_path ] = calc_HSC( Tp+273,age );
+z_max_km = 400; % [km] maximum depth
+vel_spread_cmyr = 5; % [cm/yr] spreading rate
+if strcmpi(modeltype,'hsc')
+    [ depth_m_path,T_K_path,P_GPa_path,density_path ] = calc_HSC( Tp+273,age,vel_spread_cmyr,z_max_km );
+elseif strcmpi(modeltype,'plate')
+    [ depth_m_path,T_K_path,P_GPa_path,density_path ] = calc_platecooling( Tp+273,age,vel_spread_cmyr,z_max_km,z_plate );
+end
 
 %% PLOT
 % %%
@@ -83,7 +91,7 @@ if ~exist([PROJ_path,'figs/'])
     mkdir([PROJ_path,'figs/']);
 end
 export_fig(1,[PROJ_path,'figs/a2_TP_',prop,'.pdf'],'-pdf','-painters');
-save2pdf([PROJ_path,'figs/a2_',prop,'_profile.pdf'],2,100);
+save2pdf([PROJ_path,'figs/a2_',prop,'_profile_',num2str(age),'Ma.pdf'],2,100);
 
 %% Save T-P path in text file
 % %%
@@ -104,5 +112,5 @@ if strcmpi(prop,'vp')
 elseif strcmpi(prop,'vs')
     vs = Z;
 end
-matout = [PROJ_path,'matout/',prop,'_TP_HSC_',num2str(age),'Ma_Tp',num2str(Tp),'.mat'];
+matout = [PROJ_path,'matout/',prop,'_TP_',modeltype,'_',num2str(age),'Ma_Tp',num2str(Tp),'.mat'];
 save(matout,'T','P',lower(prop),'depth');
