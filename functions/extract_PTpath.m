@@ -36,7 +36,7 @@ function [ P,T,Z,depth ] = extract_PTpath( P_path,T_path,dep_path,Pmat,Tmat,Zmat
 %     depth(ii) = dep_path(Idepth);
 % end
 
-Z = interp2(Pmat',Tmat',Zmat',P_path+(0:length(P_path)-1)'*1e-10,T_path);
+Z = interp2(Pmat',Tmat',Zmat',P_path(:)+(0:length(P_path)-1)'*1e-10,T_path(:));
 P = P_path;
 T = T_path;
 depth = dep_path;
