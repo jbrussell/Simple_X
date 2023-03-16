@@ -62,7 +62,7 @@ if strcmp(fmt,'|6.6.6')     % valid revision
     
     for ii = 1:mvar
         var = dnames{1}{ii};
-        var(regexp(var,'[()/]'))=[];
+        var(regexp(var,'[()/-]'))=[];
         zstruct.(var) = z(ii,:);
     end
 
