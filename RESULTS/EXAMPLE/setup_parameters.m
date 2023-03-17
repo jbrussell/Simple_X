@@ -6,16 +6,19 @@ addpath('./functions/');
 parameters.workingDir = [pwd,'/']; % Current folder
 
 % Project name
-parameters.PROJ = 'EXAMPLE_vol_mol';
+parameters.PROJ = 'EXAMPLE';
 
 % Define temperature and pressure range over which to calculate
 parameters.Trange = [100 1600]+273; % [K]
 % Pressure range (Don't use zero! Causes code to hang)
-parameters.Prange = [1 80000]; % [bar] (1 GPa = 10,000 bars)
+parameters.Prange = [1*1e-4 8.75]*1e4; % [bar] (1 GPa = 10,000 bars)
 
-% Define half-space cooling parameters for extracting velocities
+% Define half-space cooling or plate-cooling parameters for extracting velocities
+parameters.modeltype = 'HSC'; % 'HSC' or 'plate'
 parameters.age_Ma = 70; % [Myr] seafloor age
 parameters.Tp_C = 1350; % [C] Mantle potential temperature
+parameters.z_plate = 100; % [km] plate thickness if choose 'plate' model type
+parameters.z_max_km = 250; % [km] maximum depth
 
 % Solution options
 parameters.comps =    {'SIO2' 'AL2O3' 'FEO' 'MGO' 'CAO' 'NA2O'}; % Components of interest
@@ -26,12 +29,13 @@ parameters.solution_phases = {'Opx' 'Cpx' 'O' 'Sp' 'Gt' 'Pl' 'C2/c' 'Ring'}; % P
 parameters.exclude_endmembers = {'ky' 'cor'}; % Leave blank if don't want to exclude any (recommended to start with)
 
 % Specify thermodynamic data and solution model (stx11 is the only one tested)
-parameters.thermo_dat = 'stx11'; % just for naming purposes...
-parameters.path_thermo_dat = 'stx11ver.dat'; % Stixrude & Lithgow-Bertelloni (2011)
-parameters.solution_model = 'stx11_solution_model.dat'; % Stixrude & Lithgow-Bertelloni (2011)
+parameters.thermo_dat = 'stx21'; % just for naming purposes...
+parameters.path_thermo_dat = 'stx21ver.dat'; % Stixrude & Lithgow-Bertelloni (2011)
+parameters.solution_model = 'stx21_solution_model.dat'; % Stixrude & Lithgow-Bertelloni (2011)
 
 % Perple_x advanced options file
 parameters.options = 'perplex_option.dat';
+parameters.grid_res = 1; % resolution [1-4] 1=lowest 4=highest % larger value makes werami take longer and may lead to noise in the Vs, Vp, Rho maps
 
 %% Setup paths to binaries
 parameters.resultsDir = [parameters.workingDir,'RESULTS/']; % Path to output directory

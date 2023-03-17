@@ -1,12 +1,12 @@
 
-Perple_X version 6.8.7, source updated Oct 22, 2019.
+Perple_X release 7.0.7, March 3, 2023.
 
-Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+Copyright (C) 1986-2023 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
 
 Enter the project name (the name assigned in BUILD) [default = my_project]:
 
 Reading Perple_X options from: perplex_option.dat                                                                                  
-Writing Perple_X option summary to file: not requested                                                                                       
+Writing Perple_X option summary to: not requested                                                                                       
 
 Perple_X computational option settings for WERAMI:
 
@@ -14,57 +14,66 @@ Perple_X computational option settings for WERAMI:
 
   Input/Output options:
 
-    aqueous_output         T          [F] T
-    aqeuous_species         20        [20] 0-100
-    aq_solvent_composition y          [y] m: y => mol fraction, m => molality
-    aq_solute_composition  m          y [m]: y => mol fraction, m => molality
-    spreadsheet            T          [F] T
-    logarithmic_p          F          [F] T
+    aqueous_output          T         [F] T
+    aqeuous_species         20        [20] 0-150
+    aq_solvent_composition  y         [y] m: y => mol fraction, m => molality
+    aq_solute_composition   m         y [m]: y => mol fraction, m => molality
+    spreadsheet             T         [F] T
+    logarithmic_p           F         [F] T
+    logarithmic_X           F         [F] T
     bad_number             NaN        [NaN]
-    composition_constant   F          [F] T
-    composition_phase      mol        [mol] wt
-    composition_system     wt         [wt] mol
-    proportions            vol        [vol] wt mol
-    absolute               F          [F] T
-    cumulative             F          [F] T
-    fancy_cumulative_modes T          [F] T
-    interpolation          on         [on] off 
-    melt_is_fluid          F          [F] T
-    solution_names         mod        [model] abbreviation full
-    species_output         T          [T] F
-    species_Gibbs_energies F          [F] T
-    seismic_output         som        [some] none all
-    pause_on_error         T          [T] F
-    poisson_test           F          [F] T
-    interim_results        aut        [auto] off manual
-    sample_on_grid         F          [T] F
-    auto_exclude           T          [T] F
+    composition_constant    F         [F] T
+    composition_phase       mol       [mol] wt
+    composition_system      wt        [wt] mol
+    proportions             vol       [vol] wt mol
+    absolute                F         [F] T
+    cumulative              F         [F] T
+    fancy_cumulative_modes  T         [F] T
+    interpolation           on        [on] off 
+    melt_is_fluid           T         [T] F
+    solution_names          mod       [model] abbreviation full
+    structural_formulae     T         [T] F
+    output_species          T         [T] F
+    output_species_props    F         [F] T
+    seismic_output          som       [some] none all
+    pause_on_error          T         [T] F
+    poisson_test            F         [F] T
+    interim_results         aut       [auto] off manual
+    sample_on_grid          T         [T] F
 
   Information file output options:
 
-    option_list_files      F          [F] T; echo computational options
+    option_list_files       F         [F] T; echo computational options
 
   Thermodynamic options:
 
-    approx_alpha           T          [T] F
-    Anderson-Gruneisen     F          [F] T
-    hybrid_EoS_H2O            4       [4] 0-2, 4-7
-    hybrid_EoS_CO2            4       [4] 0-4, 7
-    hybrid_EoS_CH4            0       [0] 0-1, 7
-    fd_expansion_factor    2.0        >0 [2]
-    finite_difference_p    0.1D+05    >0 [1d4]; fraction = 0.1D-02   [1d-2]
+    approx_alpha            T         [T] F
+    Anderson-Gruneisen      F         [F] T
+    hybrid_EoS_H2O             4      [4] 0-2, 4-7
+    hybrid_EoS_CO2             4      [4] 0-4, 7
+    hybrid_EoS_CH4             0      [0] 0-1, 7
+    fd_expansion_factor     2.0       [2] >0
+    finite_difference_p     0.1E+05   [1d4] >0; fraction = 0.1E-02   [1d-2]
 
-  Seismic velocity options:
+  Seismic wavespeed computational options:
 
-    bounds                 VRH        [VRH] HS
-    vrh/hs_weighting       0.5        [0.5] 0->1
-    explicit_bulk_modulus  T          [F] T
-    poisson_ratio          on         [on] all off; Poisson ratio = 0.35
+    seismic_data_file       T         [F] T
+    bounds                  VRH       [VRH] HS
+    vrh/hs_weighting        0.5       [0.5] 0->1
+    explicit_bulk_modulus   T         [T] F
+    poisson_ratio           on        [on] all off; Poisson ratio = 0.35
+    seismic_output          som       [some] none all
+    poisson_test            F         [F] T
+    Tisza_test              F         [F] T
+    fluid_shear_modulus     T         [T] F
+    phi_d                   0.36      [0.36] 0->1
 
 To change these options see: www.perplex.ethz.ch/perplex_options.html
 
 
+**warning ver099** The P derivative of mu for qtz      is < 0, this is improbable. 
 
+--------------------------------------------------------------------------------
 Select operational mode:
     1 - properties at specified conditions
     2 - properties on a 2d grid
@@ -81,11 +90,11 @@ Enter 1 or 2:
 Enter the file name:
 
 
-File contains   104 points
+File contains   107 points
 every nth plot will be plotted, enter n:
 
 
-Select a property [enter 0 to finish]:
+Select a property:
     1 - Specific Enthalpy (J/m3)                                    
     2 - Density (kg/m3)                                             
     3 - Specific heat capacity (J/K/m3)                             
@@ -130,21 +139,16 @@ Select a property [enter 0 to finish]:
 Output cumulative modes (y/n)?
 (see www.perplex.ethz.ch/perplex_options.html#cumulative_modes)
 
-**warning ver637** Immiscibility occurs in one or more phases. Interpolation will 
-be turned off at all affected nodes. override this feature at the risk of computing
-inconsistent properties by setting the option warning_ver637 to F and restarting WERAMI.
-
-
 Data ranges excluding values equal to bad_number (       NaN) specified in perplex_option.dat:
 
-     Pl             Pl             O              Cpx            Cpx            q              Opx            Gt             C2/c           Ring           Sp            
-min   0.736968        3.95295        60.3342        6.13071        1.20131       0.100000E+100  0.149676        1.96989       0.100000E+100  0.100000E+100  0.100000E+100
-max    6.21184        10.3546        64.4626        25.4082        4.14894      -0.100000E+100   12.9805        15.4333      -0.100000E+100 -0.100000E+100 -0.100000E+100
+     Cpx            Cpx            O              Pl             Pl             qtz            Sp             Opx            Gt             C2/c           Ring          
+min    13.3061       0.100000E+100   54.4643       0.642256       0.100000E+100   7.76960        4.69387        6.60657        12.8401       0.100000E+100  0.100000E+100
+max    18.3776      -0.100000E+100   70.0284        3.99977      -0.100000E+100   7.76960        4.93733        24.5456        15.7645      -0.100000E+100 -0.100000E+100
 
 Output has been written to two files:
 
-     plt format is in file: stx11_1.plt                                                                                         
-     1d tab format is in file: stx11_1.tab                                                                                         
+     plt format is in file: stx21_1.plt                                                                                         
+     1d tab format is in file: stx21_1.tab                                                                                         
 
 plt format files can be plotted with:
 

@@ -1,12 +1,12 @@
 
-Perple_X version 6.8.7, source updated Oct 22, 2019.
+Perple_X release 7.0.7, March 3, 2023.
 
-Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+Copyright (C) 1986-2023 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
 
 Enter the project name (the name assigned in BUILD) [default = my_project]:
 
 Reading Perple_X options from: perplex_option.dat                                                                                  
-Writing Perple_X option summary to file: not requested                                                                                       
+Writing Perple_X option summary to: not requested                                                                                       
 
 Perple_X computational option settings for WERAMI:
 
@@ -14,57 +14,66 @@ Perple_X computational option settings for WERAMI:
 
   Input/Output options:
 
-    aqueous_output         T          [F] T
-    aqeuous_species         20        [20] 0-100
-    aq_solvent_composition y          [y] m: y => mol fraction, m => molality
-    aq_solute_composition  m          y [m]: y => mol fraction, m => molality
-    spreadsheet            T          [F] T
-    logarithmic_p          F          [F] T
+    aqueous_output          T         [F] T
+    aqeuous_species         20        [20] 0-150
+    aq_solvent_composition  y         [y] m: y => mol fraction, m => molality
+    aq_solute_composition   m         y [m]: y => mol fraction, m => molality
+    spreadsheet             T         [F] T
+    logarithmic_p           F         [F] T
+    logarithmic_X           F         [F] T
     bad_number             NaN        [NaN]
-    composition_constant   F          [F] T
-    composition_phase      mol        [mol] wt
-    composition_system     wt         [wt] mol
-    proportions            vol        [vol] wt mol
-    absolute               F          [F] T
-    cumulative             F          [F] T
-    fancy_cumulative_modes T          [F] T
-    interpolation          on         [on] off 
-    melt_is_fluid          F          [F] T
-    solution_names         mod        [model] abbreviation full
-    species_output         T          [T] F
-    species_Gibbs_energies F          [F] T
-    seismic_output         som        [some] none all
-    pause_on_error         T          [T] F
-    poisson_test           F          [F] T
-    interim_results        aut        [auto] off manual
-    sample_on_grid         F          [T] F
-    auto_exclude           T          [T] F
+    composition_constant    F         [F] T
+    composition_phase       mol       [mol] wt
+    composition_system      wt        [wt] mol
+    proportions             vol       [vol] wt mol
+    absolute                F         [F] T
+    cumulative              F         [F] T
+    fancy_cumulative_modes  T         [F] T
+    interpolation           on        [on] off 
+    melt_is_fluid           T         [T] F
+    solution_names          mod       [model] abbreviation full
+    structural_formulae     T         [T] F
+    output_species          T         [T] F
+    output_species_props    F         [F] T
+    seismic_output          som       [some] none all
+    pause_on_error          T         [T] F
+    poisson_test            F         [F] T
+    interim_results         aut       [auto] off manual
+    sample_on_grid          T         [T] F
 
   Information file output options:
 
-    option_list_files      F          [F] T; echo computational options
+    option_list_files       F         [F] T; echo computational options
 
   Thermodynamic options:
 
-    approx_alpha           T          [T] F
-    Anderson-Gruneisen     F          [F] T
-    hybrid_EoS_H2O            4       [4] 0-2, 4-7
-    hybrid_EoS_CO2            4       [4] 0-4, 7
-    hybrid_EoS_CH4            0       [0] 0-1, 7
-    fd_expansion_factor    2.0        >0 [2]
-    finite_difference_p    0.1D+05    >0 [1d4]; fraction = 0.1D-02   [1d-2]
+    approx_alpha            T         [T] F
+    Anderson-Gruneisen      F         [F] T
+    hybrid_EoS_H2O             4      [4] 0-2, 4-7
+    hybrid_EoS_CO2             4      [4] 0-4, 7
+    hybrid_EoS_CH4             0      [0] 0-1, 7
+    fd_expansion_factor     2.0       [2] >0
+    finite_difference_p     0.1E+05   [1d4] >0; fraction = 0.1E-02   [1d-2]
 
-  Seismic velocity options:
+  Seismic wavespeed computational options:
 
-    bounds                 VRH        [VRH] HS
-    vrh/hs_weighting       0.5        [0.5] 0->1
-    explicit_bulk_modulus  T          [F] T
-    poisson_ratio          on         [on] all off; Poisson ratio = 0.35
+    seismic_data_file       T         [F] T
+    bounds                  VRH       [VRH] HS
+    vrh/hs_weighting        0.5       [0.5] 0->1
+    explicit_bulk_modulus   T         [T] F
+    poisson_ratio           on        [on] all off; Poisson ratio = 0.35
+    seismic_output          som       [some] none all
+    poisson_test            F         [F] T
+    Tisza_test              F         [F] T
+    fluid_shear_modulus     T         [T] F
+    phi_d                   0.36      [0.36] 0->1
 
 To change these options see: www.perplex.ethz.ch/perplex_options.html
 
 
+**warning ver099** The P derivative of mu for qtz      is < 0, this is improbable. 
 
+--------------------------------------------------------------------------------
 Select operational mode:
     1 - properties at specified conditions
     2 - properties on a 2d grid
@@ -72,7 +81,7 @@ Select operational mode:
     4 - as in 3, but input from file
     0 - EXIT
 
-Select a property [enter 0 to finish]:
+Select a property:
     1 - Specific Enthalpy (J/m3)                                    
     2 - Density (kg/m3)                                             
     3 - Specific heat capacity (J/K/m3)                             
@@ -116,144 +125,38 @@ Select a property [enter 0 to finish]:
 
 Calculate individual phase properties (y/n)?
 
-Select a property [enter 0 to finish]:
-
-Your input is incorrect, probably you are using a character where
-you should be using a number or vice versa, try again...
-
+Select an additional property or enter 0 to finish:
 
 Change default variable range (y/n)?
 
 Select the grid resolution (to use an arbitrary grid set sample_on_grid to F):
-    1 -   60 x   60 nodes
-    2 -  119 x  119 nodes
-    3 -  237 x  237 nodes
-    4 -  473 x  473 nodes [default]
+
+    1 -  120 x  120 nodes [default]
+    2 -  239 x  239 nodes          
+    3 -  477 x  477 nodes          
+    4 -  953 x  953 nodes          
 
 
 
-**warning ver369** failed to converge at T=   373.00 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase ab       will be destabilized.
+**warning ver180** at T(K)=   738.5     P(bar)=   1.000    
+the poisson ratio of: qtz            is negative.
+
+the suspect data will be output and used to compute aggregate properties.
+to prevent this set poisson_check to true in perplex_option.dat
 
 
-**warning ver178** at T(K)=   373.0     P(bar)=   1.000    
-the shear modulus of: Pl            
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver369** failed to converge at T=   373.00 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase ab       will be destabilized.
-
-
-**warning ver369** failed to converge at T=   373.00 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase fo       will be destabilized.
-
-
-**warning ver178** at T(K)=   373.0     P(bar)=   1.000    
-the shear modulus of: O             
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver369** failed to converge at T=   373.00 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase jd       will be destabilized.
-
-
-**warning ver178** at T(K)=   373.0     P(bar)=   1.000    
-the shear modulus of: Cpx           
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver179** at T(K)=   373.0     P(bar)=   1.000     the effective expansivity of: q             
+**warning ver179** at T(K)=   864.6     P(bar)=   1.000     the effective expansivity of: qtz           
 is negative. Most probably this is because of a Landau ordering model. The Gruneisen
 thermal parameter and seismic speeds for this phase should be considered with caution.
 
 
-**warning ver637** Immiscibility occurs in one or more phases. Interpolation will 
-be turned off at all affected nodes. override this feature at the risk of computing
-inconsistent properties by setting the option warning_ver637 to F and restarting WERAMI.
-
-
-**warning ver369** failed to converge at T=   376.18 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase ab       will be destabilized.
-
-
-**warning ver178** at T(K)=   376.2     P(bar)=   1.000    
-the shear modulus of: Pl            
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver369** failed to converge at T=   376.18 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase ab       will be destabilized.
-
-
-**warning ver369** failed to converge at T=   376.18 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase fo       will be destabilized.
-
-
-**warning ver178** at T(K)=   376.2     P(bar)=   1.000    
-the shear modulus of: O             
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver369** failed to converge at T=   376.18 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase jd       will be destabilized.
-
-
-**warning ver178** at T(K)=   376.2     P(bar)=   1.000    
-the shear modulus of: Cpx           
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver369** failed to converge at T=   379.36 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase ab       will be destabilized.
-
-
-**warning ver178** at T(K)=   379.4     P(bar)=   1.000    
-the shear modulus of: Pl            
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver369** failed to converge at T=   379.36 K P=     -9.0 bar
-Using Sixtrude GI EoS. Phase ab       will be destabilized.
-
-
-**warning ver049** warning 369 will not be repeated for future instances of this problem.
-currently in routine: GSTX
-
-
-
-**warning ver178** at T(K)=   379.4     P(bar)=   1.000    
-the shear modulus of: O             
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver178** at T(K)=   379.4     P(bar)=   1.000    
-the shear modulus of: Cpx           
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver178** at T(K)=   382.5     P(bar)=   1.000    
-the shear modulus of: Pl            
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver178** at T(K)=   382.5     P(bar)=   1.000    
-the shear modulus of: O             
-is missing or invalid and has been estimated from the default poisson ratio
-
-
-**warning ver049** warning 178 will not be repeated for future instances of this problem.
-currently in routine: GETPHP
-
-
-
 Data ranges excluding values equal to bad_number (       NaN) specified in perplex_option.dat:
 
-     vp,km/s       
-min    6.32851     
-max    9.02417     
+     rho,kg/m3     
+min    3088.46     
+max    3602.79     
 
-Output has been written to the 2d tab format file: stx11_1.tab                                                                                         
+Output has been written to the 2d tab format file: stx21_1.tab                                                                                         
 
 2d tab format files can be processed with:
 

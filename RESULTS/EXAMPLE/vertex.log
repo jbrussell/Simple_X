@@ -1,21 +1,22 @@
 
-Perple_X version 6.8.7, source updated Oct 22, 2019.
+Perple_X release 7.0.7, March 3, 2023.
 
-Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+Copyright (C) 1986-2023 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
 
 Enter the project name (the name assigned in BUILD) [default = my_project]:
 
-Reading problem definition from file: stx11.dat                                                                                           
-Reading thermodynamic data from file: stx11ver.dat                                                                                        
-Writing print output to file: stx11.plt                                                                                           
-Writing plot output to file: stx11.plt                                                                                           
-Writing phase assemblage data to file: stx11.blk                                                                                           
-Reading solution models from file: stx11_solution_model.dat                                                                            
+Reading problem definition from file: stx21.dat                                                                                           
+Reading thermodynamic data from file: stx21ver.dat                                                                                        
+Writing print output to file: stx21.plt                                                                                           
+Writing plot output to file: stx21.plt                                                                                           
+Writing phase assemblage data to file: stx21.blk                                                                                           
+Reading solution models from file: stx21_solution_model.dat                                                                            
 
 Reading Perple_X options from: perplex_option.dat                                                                                  
-Writing auto refine summary to file: stx11_auto_refine.txt                                                                               
-Writing pseudocompound glossary to file: not requested                                                                                       
-Writing Perple_X option summary to file: not requested                                                                                       
+Writing auto refine summary to: not requested                                                                                       
+Writing seismic data options to: stx21_seismic_data.txt                                                                              
+Writing pseudocompound glossary to: not requested                                                                                       
+Writing Perple_X option summary to: not requested                                                                                       
 
 Perple_X computational option settings for VERTEX:
 
@@ -23,374 +24,318 @@ Perple_X computational option settings for VERTEX:
 
   Auto-refine options:
 
-    auto_refine            aut        off manual [auto]
+    auto_refine             aut       [auto] manual off
+    replicate_threshold     0.1E-1    [1e-2]; static opt; <0 => no replica test
+    rep_dynamic_threshold   0.1E-2    [1d-3]; dynamic opt; <0 => no replica test
+    re-refine               F         [F] T
+    intermediate_savrpc     F         [F] T
+    intermediate_savdyn     F         [F] T
+    keep_all_rpcs           T         [T] F
 
   Free energy minimization options:
 
-    final_resolution:      
-      exploratory stage     0.1E-1    [1e-2], target value, see actual values below
-      auto-refine stage     0.1E-2    [1e-3], target value, see actual values below
-    resolution_factor       2         >= 2 [2]
-    refinement_points        8        [aut] or 1->12; aut = automatic
-    solvus_tolerance_II     aut        0->1 [0.2]
-    global_reach_increment  0         >= 0 [0]
-    reach_increment_switch  on        [on] off all
-    zero_mode               0.1E-05   0->1 [1e-6]; < 0 => off
+    MINFRC_diff_increment   0.1E-6    [1e-7] 1e-3 => 1e-9
+    MINFXC_solver            0        [0] >= 0 - speci2, -1 - MINFXC
+    optimization_max_it     40        [40] >1
+    optimization_precision  0.1E-3    [1e-4], 1e-1 => 1e-6, absolute
+    dynamic_LP_start        war       [warm] cold hot
+    static_LP_start         war       [hot] cold warm
+    order_check             F         [F] T
+    refinement_points        8        [auto] 1->14
+    refinement_switch       F         [T] F
+    scatter-points          T         [T] F
+    scatter-increment       0.1E-1    [1e-2] 1e-2 => 1e-7
+    solvus_tolerance_II     aut       [0.2] 0->1 
+    zero_mode               0.1E-5    [1e-6] 0->1; < 0 => off
 
   2D grid options:
 
-    x_nodes                60 / 60    [20/40], >0, <2048; effective x-resolution   60 / 473 nodes
-    y_nodes                60 / 60    [20/40], >0, <2048; effective y-resolution   60 / 473 nodes
-    grid_levels             1 / 4     [1/4], >0, <10
-    linear_model             on       off [on]
+    x_nodes                 20 /120   [10/40] >0, <2048; effective x-resolution   20 / 953 nodes
+    y_nodes                 20 /120   [10/40] >0, <2048; effective y-resolution   20 / 953 nodes
+    grid_levels             1 / 4     [1/4] >0, <10
+    linear_model            on        [on] off
 
   Solution subdivision options:
 
-    initial_resolution:    
-      exploratory stage    0.0625     0->1 [1/16], 0 => off
-      auto-refine stage    0.0208     0->1 [1/48 ], 0 => off
-    stretch_factor         0.0020     >0 [2d-3]
-    non_linear_switch      F          [F] T
-    subdivision_override   off        [off] lin str
-    hard_limits            off        [off] on
-    refine_endmembers      F          [F] T
+    initial_resolution:     0.2000    [1/5] 0->1; 0 => off
+    stretch_factor          0.0020    [2d-3] >0 
+    non_linear_switch       F         [F] T
+    subdivision_override    off       [lin] off str
+    refine_endmembers       F         [F] T
 
   Thermodynamic options:
 
-    solvus_tolerance       aut        [aut] or 0->1; aut = automatic, 0 => p=c pseudocompounds, 1 => homogenize
-    T_stop (K)                0.0     [0]
+    solvus_tolerance        aut       [aut] or 0->1; aut = automatic, 0 => p=c pseudocompounds, 1 => homogenize
+    T_stop (K)              0.0       [0]
     T_melt (K)              873.0     [873]
-    order_check            on         off [on]
-    approx_alpha           T          [T] F
-    Anderson-Gruneisen     F          [F] T
-    speciation_factor        100.     >10 [100] speciation precision = final resolution/speciation_factor
+    approx_alpha            T         [T] F
+    Anderson-Gruneisen      F         [F] T
+    speciation_precision    0.1E-4    [1d-5] <1; absolute
     speciation_max_it       100       [100]
-    hybrid_EoS_H2O            4       [4] 0-2, 4-7
-    hybrid_EoS_CO2            4       [4] 0-4, 7
-    hybrid_EoS_CH4            0       [0] 0-1, 7
-    aq_bad_results         err        [err] 101, 102, 103, ignore
-    aq_lagged_speciation   F          [F] T
-    aq_ion_H+              T          [T] F => use OH-
-    aq_oxide_components    F          [F] T
-    aq_solvent_solvus      T          [T] F
-    aq_vapor_epsilon       1.0        [1.]
+    GFSM                    F         [F] T GFSM/special_component toggle
+    hybrid_EoS_H2O          4         [4] 0-2, 4-7
+    hybrid_EoS_CO2          4         [4] 0-4, 7
+    hybrid_EoS_CH4          0         [0] 0-1, 7
+    aq_bad_results          err       [err] 101 102 103 ignore
+    aq_lagged_speciation    F         [F] T
+    aq_ion_H+               T         [T] F => use OH-
+    aq_oxide_components     F         [F] T
+    aq_solvent_solvus       T         [T] F
+    aq_vapor_epsilon        1.0       [1.]
 
   Input/Output options:
 
-    dependent_potentials   on         off [on]
-    pause_on_error         T          [T] F
-    auto_exclude           T          [T] F
-    logarithmic_p          F          [F] T
+    pause_on_error          T         [T] F
+    timing                  T         [T] F
+    auto_exclude            T         [T] F
+    warn_interactive        T         [T] F
+    warn_no_limit           F         [F] T
+    output_iteration_detai  F         [F] T
+    output_iteration_g      F         [F] T
+    logarithmic_p           F         [F] T
+    logarithmic_X           F         [F] T
     bad_number              NaN       [NaN]
-    interim_results        aut        [auto] off manual
+    interim_results         aut       [auto] off manual
 
   Information file output options:
 
-    option_list_files      F          [F] T; echo computational options
-    pseudocompound_file    F          [F] T; echo static pseudocompound compositions
-    auto_refine_file       T          [T] F; echo auto-refine compositions
-
-  Worst case (Cartesian) compositional resolution (mol): 
-
-    Exploratory stage:    0.521E-2
-    Auto-refine stage:    0.868E-3
-
-  Adapative minimization will be done with: 
-
-    4 iterations in the exploratory stage
-    5 iterations in the autorefine stage
+    option_list_files       F         [F] T; echo computational options
+    pseudocompound_file     F         [F] T; echo static pseudocompound compositions
+    auto_refine_file        F         [T] F; echo auto-refine compositions
+    seismic_data_file       T         [F] T; echo seismic wavespeed options
 
 To change these options see: www.perplex.ethz.ch/perplex_options.html
 
 
+**warning ver099** The P derivative of mu for qtz      is < 0, this is improbable. 
+
+
 **warning ver099**  no data for aqueous species, aq_output and aq_lagged_speciation disabled.
 
-      15 pseudocompounds generated for: C2/c      
-      15 pseudocompounds generated for: Pl        
-      15 pseudocompounds generated for: Sp        
-      15 pseudocompounds generated for: O         
-      15 pseudocompounds generated for: Ring      
-     965 pseudocompounds generated for: Opx       
-    4840 pseudocompounds generated for: Cpx       
-    4840 pseudocompounds generated for: Gt        
+--------------------------------------------------------------------------------
+Solution model summary:
 
-Total number of pseudocompounds:   10720
+       4 pseudocompounds generated for: C2/c      
+       4 pseudocompounds generated for: Pl        
+       4 pseudocompounds generated for: Sp        
+       4 pseudocompounds generated for: O         
+       4 pseudocompounds generated for: Ring      
+      52 pseudocompounds generated for: Opx       
+     121 pseudocompounds generated for: Cpx       
+     273 pseudocompounds generated for: Gt        
 
+Total number of pseudocompounds:     466
+
+Summary of included solution models:
+
+C2/c       Pl         Sp         O          Ring       Opx        Cpx        Gt        
+--------------------------------------------------------------------------------
 ** Starting exploratory computational stage **
 
-
-
-  1.7% done with low level grid.
-  3.3% done with low level grid.
-  5.0% done with low level grid.
-  6.7% done with low level grid.
-  8.3% done with low level grid.
- 10.0% done with low level grid.
- 11.7% done with low level grid.
- 13.3% done with low level grid.
- 15.0% done with low level grid.
- 16.7% done with low level grid.
- 18.3% done with low level grid.
- 20.0% done with low level grid.
- 21.7% done with low level grid.
- 23.3% done with low level grid.
- 25.0% done with low level grid.
- 26.7% done with low level grid.
- 28.3% done with low level grid.
- 30.0% done with low level grid.
- 31.7% done with low level grid.
+  4.8% done with low level grid.
+  9.5% done with low level grid.
+ 14.3% done with low level grid.
+ 19.0% done with low level grid.
+ 23.8% done with low level grid.
+ 28.6% done with low level grid.
  33.3% done with low level grid.
- 35.0% done with low level grid.
- 36.7% done with low level grid.
- 38.3% done with low level grid.
- 40.0% done with low level grid.
- 41.7% done with low level grid.
- 43.3% done with low level grid.
- 45.0% done with low level grid.
- 46.7% done with low level grid.
- 48.3% done with low level grid.
- 50.0% done with low level grid.
- 51.7% done with low level grid.
- 53.3% done with low level grid.
- 55.0% done with low level grid.
- 56.7% done with low level grid.
- 58.3% done with low level grid.
- 60.0% done with low level grid.
- 61.7% done with low level grid.
- 63.3% done with low level grid.
- 65.0% done with low level grid.
- 66.7% done with low level grid.
- 68.3% done with low level grid.
- 70.0% done with low level grid.
- 71.7% done with low level grid.
- 73.3% done with low level grid.
- 75.0% done with low level grid.
- 76.7% done with low level grid.
- 78.3% done with low level grid.
- 80.0% done with low level grid.
- 81.7% done with low level grid.
- 83.3% done with low level grid.
- 85.0% done with low level grid.
- 86.7% done with low level grid.
- 88.3% done with low level grid.
- 90.0% done with low level grid.
- 91.7% done with low level grid.
- 93.3% done with low level grid.
- 95.0% done with low level grid.
- 96.7% done with low level grid.
- 98.3% done with low level grid.
-100.0% done with low level grid.
-
-Endmember fractions for model: C2/c      
-
-     Endmember     Minimum         Maximum
-     c2/c         0.90104         0.97917    
-
-Endmember fractions for model: Pl        
-
-     Endmember     Minimum         Maximum
-     ab            0.0000          1.0000    
-
-Endmember fractions for model: Sp        
-
-     Endmember     Minimum         Maximum
-     sp           0.82292         0.89583    
-
-Endmember fractions for model: O         
-
-     Endmember     Minimum         Maximum
-     fo           0.89583         0.99479    
-
-Endmember fractions for model: Ring      
-
-     Endmember     Minimum         Maximum
-     ring         0.20833E-01     0.14063    
-
-Endmember fractions for model: Opx       
-
-     Endmember     Minimum         Maximum
-     odi           0.0000         0.21875    
-     en           0.56771         0.96354    
-     fs           0.36458E-01     0.14583    
-
-Endmember fractions for model: Cpx       
-
-     Endmember     Minimum         Maximum
-     jd           0.52083E-02     0.85938    
-     di            0.0000         0.98438    
-     hed           0.0000         0.88881E-01
-     cen           0.0000         0.58854    
-
-Endmember fractions for model: Gt        
-
-     Endmember     Minimum         Maximum
-     gr           0.20833E-01     0.11979    
-     alm          0.11979         0.75751    
-     maj           0.0000         0.83333E-01
-     py           0.20082         0.76562    
-
-
-       6 pseudocompounds generated for: C2/c      
-      47 pseudocompounds generated for: Pl        
-       5 pseudocompounds generated for: Sp        
-       6 pseudocompounds generated for: O         
-       8 pseudocompounds generated for: Ring      
-    1050 pseudocompounds generated for: Opx       
-  102820 pseudocompounds generated for: Cpx       
-         a reach_increment of  3 is specified for Cpx       
-   18052 pseudocompounds generated for: Gt        
-
-Total number of pseudocompounds:  121994
-
-** Starting auto_refine computational stage **
-
-
-
-  0.2% done with low level grid.
-  1.9% done with low level grid.
-  3.6% done with low level grid.
-  5.3% done with low level grid.
-  7.0% done with low level grid.
-  8.7% done with low level grid.
- 10.4% done with low level grid.
- 12.1% done with low level grid.
- 13.7% done with low level grid.
- 15.4% done with low level grid.
- 17.1% done with low level grid.
- 18.8% done with low level grid.
- 20.5% done with low level grid.
- 22.2% done with low level grid.
- 23.9% done with low level grid.
- 25.6% done with low level grid.
- 27.3% done with low level grid.
- 29.0% done with low level grid.
- 30.7% done with low level grid.
- 32.3% done with low level grid.
- 34.0% done with low level grid.
- 35.7% done with low level grid.
- 37.4% done with low level grid.
- 39.1% done with low level grid.
- 40.8% done with low level grid.
- 42.5% done with low level grid.
- 44.2% done with low level grid.
- 45.9% done with low level grid.
+ 38.1% done with low level grid.
+ 42.9% done with low level grid.
  47.6% done with low level grid.
- 49.3% done with low level grid.
- 51.0% done with low level grid.
- 52.6% done with low level grid.
- 54.3% done with low level grid.
- 56.0% done with low level grid.
- 57.7% done with low level grid.
- 59.4% done with low level grid.
- 61.1% done with low level grid.
- 62.8% done with low level grid.
- 64.5% done with low level grid.
- 66.2% done with low level grid.
- 67.9% done with low level grid.
- 69.6% done with low level grid.
- 71.2% done with low level grid.
- 72.9% done with low level grid.
- 74.6% done with low level grid.
- 76.3% done with low level grid.
- 78.0% done with low level grid.
- 79.7% done with low level grid.
- 81.4% done with low level grid.
- 83.1% done with low level grid.
- 84.8% done with low level grid.
- 86.5% done with low level grid.
- 88.2% done with low level grid.
- 89.9% done with low level grid.
- 91.5% done with low level grid.
- 93.2% done with low level grid.
- 94.9% done with low level grid.
- 96.6% done with low level grid.
+ 52.4% done with low level grid.
+ 57.1% done with low level grid.
+ 61.9% done with low level grid.
+ 66.7% done with low level grid.
+ 71.4% done with low level grid.
+ 76.2% done with low level grid.
+ 81.0% done with low level grid.
+ 85.7% done with low level grid.
+ 90.5% done with low level grid.
+ 95.2% done with low level grid.
+--------------------------------------------------------------------------------
+Exploratory stage generated:
+
+      11 compositions for: C2/c      
+      40 compositions for: Pl        
+      22 compositions for: Sp        
+      16 compositions for: O         
+      10 compositions for: Ring      
+     162 compositions for: Opx       
+     263 compositions for: Cpx       
+     249 compositions for: Gt        
+
+Total number of compositions:     773
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+** Starting auto-refine computational stage **
+
+  0.8% done with low level grid.
+  1.7% done with low level grid.
+  2.5% done with low level grid.
+  3.3% done with low level grid.
+  4.2% done with low level grid.
+  5.0% done with low level grid.
+  5.8% done with low level grid.
+  6.7% done with low level grid.
+  7.5% done with low level grid.
+  8.3% done with low level grid.
+  9.2% done with low level grid.
+ 10.0% done with low level grid.
+ 10.8% done with low level grid.
+ 11.7% done with low level grid.
+ 12.5% done with low level grid.
+ 13.3% done with low level grid.
+ 14.2% done with low level grid.
+ 15.0% done with low level grid.
+ 15.8% done with low level grid.
+ 16.7% done with low level grid.
+ 17.5% done with low level grid.
+ 18.3% done with low level grid.
+ 19.2% done with low level grid.
+ 20.0% done with low level grid.
+ 20.8% done with low level grid.
+ 21.7% done with low level grid.
+ 22.5% done with low level grid.
+ 23.3% done with low level grid.
+ 24.2% done with low level grid.
+ 25.0% done with low level grid.
+ 25.8% done with low level grid.
+ 26.7% done with low level grid.
+ 27.5% done with low level grid.
+ 28.3% done with low level grid.
+ 29.2% done with low level grid.
+ 30.0% done with low level grid.
+ 30.8% done with low level grid.
+ 31.7% done with low level grid.
+ 32.5% done with low level grid.
+ 33.3% done with low level grid.
+ 34.2% done with low level grid.
+ 35.0% done with low level grid.
+ 35.8% done with low level grid.
+ 36.7% done with low level grid.
+ 37.5% done with low level grid.
+ 38.3% done with low level grid.
+ 39.2% done with low level grid.
+ 40.0% done with low level grid.
+ 40.8% done with low level grid.
+ 41.7% done with low level grid.
+ 42.5% done with low level grid.
+ 43.3% done with low level grid.
+ 44.2% done with low level grid.
+ 45.0% done with low level grid.
+ 45.8% done with low level grid.
+ 46.7% done with low level grid.
+ 47.5% done with low level grid.
+ 48.3% done with low level grid.
+ 49.2% done with low level grid.
+ 50.0% done with low level grid.
+ 50.8% done with low level grid.
+ 51.7% done with low level grid.
+ 52.5% done with low level grid.
+ 53.3% done with low level grid.
+ 54.2% done with low level grid.
+ 55.0% done with low level grid.
+ 55.8% done with low level grid.
+ 56.7% done with low level grid.
+ 57.5% done with low level grid.
+ 58.3% done with low level grid.
+ 59.2% done with low level grid.
+ 60.0% done with low level grid.
+ 60.8% done with low level grid.
+ 61.7% done with low level grid.
+ 62.5% done with low level grid.
+ 63.3% done with low level grid.
+ 64.2% done with low level grid.
+ 65.0% done with low level grid.
+ 65.8% done with low level grid.
+ 66.7% done with low level grid.
+ 67.5% done with low level grid.
+ 68.3% done with low level grid.
+ 69.2% done with low level grid.
+ 70.0% done with low level grid.
+ 70.8% done with low level grid.
+ 71.7% done with low level grid.
+ 72.5% done with low level grid.
+ 73.3% done with low level grid.
+ 74.2% done with low level grid.
+ 75.0% done with low level grid.
+ 75.8% done with low level grid.
+ 76.7% done with low level grid.
+ 77.5% done with low level grid.
+ 78.3% done with low level grid.
+ 79.2% done with low level grid.
+ 80.0% done with low level grid.
+ 80.8% done with low level grid.
+ 81.7% done with low level grid.
+ 82.5% done with low level grid.
+ 83.3% done with low level grid.
+ 84.2% done with low level grid.
+ 85.0% done with low level grid.
+ 85.8% done with low level grid.
+ 86.7% done with low level grid.
+ 87.5% done with low level grid.
+ 88.3% done with low level grid.
+ 89.2% done with low level grid.
+ 90.0% done with low level grid.
+ 90.8% done with low level grid.
+ 91.7% done with low level grid.
+ 92.5% done with low level grid.
+ 93.3% done with low level grid.
+ 94.2% done with low level grid.
+ 95.0% done with low level grid.
+ 95.8% done with low level grid.
+ 96.7% done with low level grid.
+ 97.5% done with low level grid.
  98.3% done with low level grid.
+ 99.2% done with low level grid.
 100.0% done with low level grid.
 
 Beginning grid refinement stage.
 
-   421 grid cells to be refined at grid level 2
-       ...working (   502 minimizations done)
-       refinement at level 2 involved    925 minimizations
-  4525 minimizations required of the theoretical limit of   14161
-   805 grid cells to be refined at grid level 3
-       ...working (    78 minimizations done)
-       ...working (   579 minimizations done)
-       ...working (  1082 minimizations done)
-       ...working (  1584 minimizations done)
-       refinement at level 3 involved   1621 minimizations
-  6146 minimizations required of the theoretical limit of   56169
-  1586 grid cells to be refined at grid level 4
-       ...working (   466 minimizations done)
-       ...working (   968 minimizations done)
-       ...working (  1469 minimizations done)
-       ...working (  1971 minimizations done)
-       ...working (  2474 minimizations done)
-       ...working (  2977 minimizations done)
-       refinement at level 4 involved   3078 minimizations
-  9224 minimizations required of the theoretical limit of  224676
+   787 grid cells to be refined at grid level 2
+       ...working (   501 minimizations done)
+       ...working (  1002 minimizations done)
+       ...working (  1504 minimizations done)
+       refinement at level 2 involved   1647 minimizations
+ 16047 minimizations required of the theoretical limit of   57121
+  1503 grid cells to be refined at grid level 3
+       ...working (   359 minimizations done)
+       ...working (   860 minimizations done)
+       ...working (  1362 minimizations done)
+       ...working (  1863 minimizations done)
+       ...working (  2364 minimizations done)
+       ...working (  2865 minimizations done)
+       refinement at level 3 involved   3028 minimizations
+ 19075 minimizations required of the theoretical limit of  227529
+  3100 grid cells to be refined at grid level 4
+       ...working (   339 minimizations done)
+       ...working (   840 minimizations done)
+       ...working (  1342 minimizations done)
+       ...working (  1843 minimizations done)
+       ...working (  2346 minimizations done)
+       ...working (  2847 minimizations done)
+       ...working (  3349 minimizations done)
+       ...working (  3851 minimizations done)
+       ...working (  4353 minimizations done)
+       ...working (  4854 minimizations done)
+       ...working (  5357 minimizations done)
+       ...working (  5859 minimizations done)
+       refinement at level 4 involved   6220 minimizations
+ 25295 minimizations required of the theoretical limit of  910116
+--------------------------------------------------------------------------------
+     Timing                    min.         % of total
 
-**warning ver993** The compositions of the following solutions reached internal
-limits that were automatically relaxed:
+  Static G calculation       0.44550E-01         2.0
+  Dynamic G calculation      0.54908            24.2
+  Static LP                  0.28055E-01         1.2
+  Dynamic LP                 0.38616            17.0
+  Successive QP               1.1888            52.4
+  Total of above              2.1967            96.9
+  Total elapsed time          2.2668           100.0
+--------------------------------------------------------------------------------
 
-     Gt        
+End of job: stx21                                                                                               
 
-Restriction during the auto-refine stage is usually insignificant. If desired, confirm
-by comparing the ranges below to those in the *.arf file.
+--------------------------------------------------------------------------------
 
-NOTE: unintentional restrictions encountered during the exploratory stage may be problematic,
-refer to the output written at the end of the exploratory stage for relevant warnings.
-
-
-Endmember fractions for model: C2/c      
-
-     Endmember     Minimum         Maximum
-     c2/c         0.90191         0.98177    
-
-Endmember fractions for model: Pl        
-
-     Endmember     Minimum         Maximum
-     ab            0.0000          1.0000    
-
-Endmember fractions for model: Sp        
-
-     Endmember     Minimum         Maximum
-     sp           0.82118         0.89410    
-
-Endmember fractions for model: O         
-
-     Endmember     Minimum         Maximum
-     fo           0.89625         0.99306    
-
-Endmember fractions for model: Ring      
-
-     Endmember     Minimum         Maximum
-     ring         0.20833E-01     0.13889    
-
-Endmember fractions for model: Opx       
-
-     Endmember     Minimum         Maximum
-     odi           0.0000         0.21788    
-     en           0.56771         0.96354    
-     fs           0.36458E-01     0.15104    
-
-Endmember fractions for model: Cpx       
-
-     Endmember     Minimum         Maximum
-     jd           0.69444E-02     0.85851    
-     di            0.0000         0.98264    
-     hed           0.0000         0.93221E-01
-     cen           0.0000         0.58073    
-
-Endmember fractions for model: Gt        
-
-     Endmember     Minimum         Maximum
-     gr           0.22569E-01     0.11892    
-     alm          0.12326         0.77400    
-     maj           0.0000         0.84201E-01
-     py           0.16871         0.76649    
-
-The following solution models have non-zero reach_increment:
-
-                             reach_increment
-    Cpx                            3
+    42077415

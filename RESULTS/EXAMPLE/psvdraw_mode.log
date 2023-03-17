@@ -1,7 +1,7 @@
 
-Perple_X version 6.8.7, source updated Oct 22, 2019.
+Perple_X release 7.0.7, March 3, 2023.
 
-Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+Copyright (C) 1986-2023 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
 
 Enter the project or plot file name [i.e., without the .plt suffix]:
 
@@ -20,6 +20,8 @@ Perple_X plot options are currently set as:
                              800      [800] y-length (pts)
     field_fill             T          [T] F
     field_label            T          [T] F
+    numeric_field_label    F          [F] T, if T PSSECT writes list to *_assemblages.txt
+    replicate_label        0.025      0->1 [0.025]
     field_label_scale      0.72       [0.72] (rel)
     font                   Helvetica                               
     grid                   F          [F] T
@@ -32,21 +34,22 @@ Perple_X plot options are currently set as:
                              220.     [0.18] y-translation (pts)
                              0.00     [0.0]  rotation (deg)
     plot_aspect_ratio      1.000      [1.0] x_axis_length/y_axis_length
-    replicate_label        0.025      0->1 [0.025]
     splines                T          [T] F
     tenth_ticks            F          [F] T
     text_scale             1.000      [1.] (rel)
+    plot_extra_data        
 
 To change these options edit or create the plot option file
 See: www.perplex.ethz.ch/perplex_plot_options.html
 
 
-PostScript will be written to file: stx11_1.ps                                                                                          
+PostScript will be written to file: stx21_1.ps                                                                                          
 
 Modify the default plot (y/n)?
 
 Modify drafting options (y/n)?
   answer yes to modify:
+   - field labeling
    - x-y plotting limits
    - axes numbering
 
@@ -79,9 +82,9 @@ program/routine: PSCURV/PSVDRAW
 Modify default axes numbering (y/n)?
 
 Enter the starting value and interval for major tick marks on
-the X-axis ( current values are:  373.      266.    )
+the X-axis ( current values are:  386.      265.    )
 Enter the new values:
 
 Enter the starting value and interval for major tick marks on
-the Y-axis ( current values are: 0.150      12.9    )
+the Y-axis ( current values are: 0.642      13.9    )
 Enter the new values:

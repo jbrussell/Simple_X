@@ -12,7 +12,9 @@ clear;
 %                               USER INPUT                                %
 %  =====================================================================  %
 
-is_plot_sum = 1; % plot cumulative sum of modes?
+is_plot_sum = 0; % plot cumulative sum of modes?
+
+Nsmooth = 1; % number of points to smooth over? (1=no smoothing)
 
 modes_order = {'O' 'Cpx' 'Opx' 'Gt' 'Pl'}; % leave empty for automatic ordering;
 %  =====================================================================  %
@@ -78,7 +80,7 @@ for jj = I_modes
     
     % Smooth modes and replace NAN with zeros
     y(isnan(y)) = 0;
-    y = smooth(y,3);
+    y = smooth(y,Nsmooth);
     
     kk = kk+1;
     names{kk} = dnames{1}{jj};

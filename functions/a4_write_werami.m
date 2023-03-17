@@ -3,6 +3,7 @@ function [] = a4_write_werami( parameters,prop )
 
 PROJ = parameters.PROJ;
 thermo_dat = parameters.thermo_dat;
+grid_res = parameters.grid_res;
 
 RUNFILE = ['a4_infile_werami.txt'];
 
@@ -29,10 +30,12 @@ fprintf(fid,'%s\n',thermo_dat);
 fprintf(fid,'2\n');
 fprintf(fid,'%d\n',prop_num); %2 - Density (kg/m3); 13 - P-wave velocity (Vp, km/s); 14 - S-wave velocity (Vs, km/s)
 fprintf(fid,'n\n');
-fprintf(fid,'n\n');
 fprintf(fid,'0\n');
 fprintf(fid,'n\n');
-fprintf(fid,'4\n'); % resolution [1-4] 1=lowest 4=highest
+fprintf(fid,[num2str(grid_res),'\n']); % resolution [1-4] 1=lowest 4=highest
+if grid_res~=1
+    fprintf(fid,'y\n');
+end
 fprintf(fid,'0\n');
 
 fclose(fid);
