@@ -16,7 +16,7 @@ is_plot_sum = 0; % plot cumulative sum of modes?
 
 Nsmooth = 1; % number of points to smooth over? (1=no smoothing)
 
-modes_order = {'O' 'Cpx' 'Opx' 'Gt' 'Pl'}; % leave empty for automatic ordering;
+% modes_order = {'O' 'Cpx' 'Opx' 'Gt' 'Pl'}; % leave empty for automatic ordering;
 %  =====================================================================  %
 %                             END USER INPUT                              %
 %  =====================================================================  %
@@ -25,6 +25,7 @@ modes_order = {'O' 'Cpx' 'Opx' 'Gt' 'Pl'}; % leave empty for automatic ordering;
 setup_parameters;
 PROJ_path = parameters.PROJ_path;
 thermo_dat = parameters.thermo_dat;
+modes_order = parameters.solution_phases;
 
 %% Load data
 path2tab = [PROJ_path,thermo_dat,'_mode.tabs'];
