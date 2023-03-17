@@ -16,7 +16,7 @@ clear; close all;
 %  =====================================================================  %
 
 % Desired physical properties
-props = {'vs','vp'}; % vp, vs, rho
+props = {'vs','vp','rho'}; % vp, vs, rho
 
 % Recalculate phase diagram? This can be set to 0 until want to overwrite
 % previous results

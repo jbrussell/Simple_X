@@ -26,6 +26,8 @@ if strcmpi(prop,'vs')
     clims = [4 5];
 elseif strcmpi(prop,'vp')
     clims = [7 9];
+elseif strcmpi(prop,'rho')
+    clims = [3000 4600];
 end
 
 %% Load data
@@ -111,6 +113,8 @@ if strcmpi(prop,'vp')
     vp = Z;
 elseif strcmpi(prop,'vs')
     vs = Z;
+elseif strcmpi(prop,'rho')
+    rho = Z;
 end
 matout = [PROJ_path,'matout/',prop,'_TP_',modeltype,'_',num2str(age),'Ma_Tp',num2str(Tp),'.mat'];
 save(matout,'T','P',lower(prop),'depth');
