@@ -1,0 +1,72 @@
+stx21ver.dat     thermodynamic data file                                                                                                    
+no_print | print generates print output
+plot     | obsolete 6.8.4+
+stx21_solution_model.dat     | solution model file, blank = none                                                                                                                                                                                                
+Staudigel closed system model                                                                                                                                                                                                                                   
+perplex_option.dat     | Perple_X option file                                                                                                                                                                                                                   
+    5 calculation type: 0- composition, 1- Schreinemakers, 3- Mixed, 4- swash, 5- gridded min, 7- 1d fract, 8- gwash, 9- 2d fract, 10- 7 w/file input, 11- 9 w/file input, 12- 0d infiltration
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 number component transformations
+    7 number of components in the data base
+    1 component amounts, 0 - mole, 1 mass
+    0 unused place holder, post 06
+    0 unused place holder, post 06
+    0 unused place holder, post 05
+    0 ifug EoS for saturated phase
+    2 gridded minimization dimension (1 or 2)
+    0 special dependencies: 0 - P and T independent, 1 - P(T), 2 - T(P)
+ 0.00000      0.00000      0.00000      0.00000      0.00000     Geothermal gradient polynomial coeffs.
+
+begin thermodynamic component list
+SIO2  1  45.1800      0.00000      0.00000     mass  amount
+AL2O3 1  4.42000      0.00000      0.00000     mass  amount
+FEO   1  7.63000      0.00000      0.00000     mass  amount
+MGO   1  38.9600      0.00000      0.00000     mass  amount
+CAO   1  3.41000      0.00000      0.00000     mass  amount
+NA2O  1 0.400000      0.00000      0.00000     mass  amount
+end thermodynamic component list
+
+
+begin saturated component list
+end saturated component list
+
+
+begin saturated phase component list
+end saturated phase component list
+
+
+begin independent potential/fugacity/activity list
+end independent potential list
+
+
+begin excluded phase list
+ky      
+cor     
+end excluded phase list
+
+
+begin solution phase list
+Opx       
+Cpx       
+O         
+Sp        
+Gt        
+Pl        
+C2/c      
+Ring      
+end solution phase list
+
+   87500.0        1873.00        0.00000        0.00000        0.00000     max p, t, xco2, mu_1, mu_2
+   1.00000        373.000        0.00000        0.00000        0.00000     min p, t, xco2, mu_1, mu_2
+   0.00000        0.00000        0.00000        0.00000        0.00000     unused place holder post 06
+
+ 2  1  4  5  3   indices of 1st & 2nd independent & sectioning variables
+

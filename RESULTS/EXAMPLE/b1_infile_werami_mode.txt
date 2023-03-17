@@ -1,4 +1,4 @@
-stx11
+stx21
 4
 2
 TP_HSC_70Ma_Tp1350.dat

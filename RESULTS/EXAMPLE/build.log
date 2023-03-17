@@ -1,7 +1,7 @@
 
-Perple_X version 6.8.7, source updated Oct 22, 2019.
+Perple_X release 7.0.7, March 3, 2023.
 
-Copyright (C) 1986-2019 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
+Copyright (C) 1986-2023 James A D Connolly <www.perplex.ethz.ch/copyright.html>.
 
 
 NO is the default (blank) answer to all Y/N prompts
@@ -10,7 +10,7 @@ NO is the default (blank) answer to all Y/N prompts
 Enter a name for this project (the name will be used as the
 root for all output file names) [default = my_project]:
 
-The problem definition file will be named: stx11.dat                                                                                           
+The problem definition file will be named: stx21.dat                                                                                           
 
 Enter thermodynamic data file name [default = hp02ver.dat]:
 
@@ -20,7 +20,7 @@ See: www.perplex.ethz.ch/perplex_options.html
 Reading Perple_X options from: perplex_option.dat                                                                                  
 
 The current data base components are:
- NA2O  MGO   AL2O3 SIO2  CAO   FEO  
+ NA2O  MGO   AL2O3 SIO2  CAO   FEO   O2   
 Transform them (Y/N)? 
 Specify computational mode:
 
@@ -42,7 +42,7 @@ Use chemical potentials, activities or fugacities as independent
 variables (Y/N)?
 
 Select thermodynamic components from the set:
- NA2O  MGO   AL2O3 SIO2  CAO   FEO  
+ NA2O  MGO   AL2O3 SIO2  CAO   FEO   O2   
 Enter names, 1 per line, press <enter> to finish:
 
 The data base has P(bar)   and T(K)     as default independent potentials.
@@ -66,8 +66,8 @@ and y_nodes) these parameters are currently set for the exploratory and autorefi
 as follows:
 
 stage        grid_levels  xnodes  ynodes    effective resolution
-exploratory       1          60      60        60 x  60 nodes
-auto-refine       4          60      60       473 x 473 nodes
+exploratory       1          20      20        20 x  20 nodes
+auto-refine       4         120     120       953 x 953 nodes
 
 To change these options edit or create the file perplex_option.dat                                                                                  
 See: www.perplex.ethz.ch/perplex_options.html#grid_parameters
@@ -86,6 +86,9 @@ for the bulk composition of interest:
 Output a print file (Y/N)?
   
 
+**warning ver099** The P derivative of mu for qtz      is < 0, this is improbable. 
+
+
 Exclude pure and/or endmember phases (Y/N)?
 Do you want to be prompted for phases (Y/N)?
 Enter names, 1 per line, press <enter> to finish:
@@ -98,7 +101,7 @@ Select models from the following list, enter 1 per line, press <enter> to finish
 
   C2/c        Wus         Pv          Pl          Sp          O         
   Wad         Ring        Opx         Cpx         Aki         Gt        
-  Gt_maj      Ppv         CF        
+  Ppv         CF          NaAl      
 
 For details on these models see: www.perplex.ethz.ch/perplex_solution_model_glossary.html
 or read the commentary in the solution model file.
