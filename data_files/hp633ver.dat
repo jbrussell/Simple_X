@@ -118,29 +118,29 @@ begin_makes
  | -13469.8  -14.694 .84
         
  | mthm = 6 hem - 4 mt             | mthm O2 buffer
- | 0 0 0                        
+ | 0
 
  | qfm = 2 mt + 3 q  -3 fa         | qfm O2 buffer
- | 0 0 0                        
+ | 0
 
  |emog = -1 fo - 2 gph + 1 mag + 1/2 en | EMOG O2 buffer
- |0 0 0 
+ |0
 
  |ffm = -6 fa + 3 fs + 2 mt        | ffm O2 buffer
- |0 0 0 
+ |0
 
  |fff = 2 fa - 2 iron - 1 fs         | iron fa fs O2 buffer
- |0 0 0 
+ |0
 
  | tbi = 1 phl - 1 fo + 1 ru + 1 q | Ti-biotite endmember for TiBio(HP) model
- | 45e3 0 0 
+ | 45e3
 
  | tbi1 = 1 phl - 1 br + 1 ru      | Ti-biotite endmember for TiBio(WPH) model
- | 78e3 0 0                        | L Tajcamanova, 5/11/2006.
+ | 78e3                            | L Tajcamanova, 5/11/2006.
 
  | fbi = 1 east - 1/2 cor + 1/2 hem  | Fe3+-biotite endmember for TiBio(WPH) model, definition corrected for
  |                                   | presumed typo in the WPH (JMG, 2007) paper by L Tajcamanova, 5/11/2007.
- | 13.45e3 0 0                       | fbi = 1 east - 1/2 cor + 1 hem, 8/10/2007, L Tajcamanova               
+ | 13.45e3                           | fbi = 1 east - 1/2 cor + 1 hem, 8/10/2007, L Tajcamanova               
 
                                 | Fe endmembers for ultramafic mineral solution
                                 | models, based on the talc Fe-Mg exchange.
@@ -166,7 +166,7 @@ DQF = -2e3 + 46.1*T_K
 |  -750 0 0 
 
 | odo = 1/2 mag + 1/2 cc          | ordered dolmite species for H&P dolomite model
-| -13.5d3 0 0 
+| -13.5d3
 
                                 | Green et al (2007) omphacite model, ds6 
 acm_dqf = 1 acm
@@ -229,6 +229,9 @@ dilm = 1 ilm_nol
                                 | 1993  -2.1 0 => the TC DQF coeffecients, the values below are
                                 | oilm + {DH,R*ln(4),0} 
        DQF(J/mol) = 17043.57559 -13.11797099 .1836386612e-1
+dhem = 1 hem_nol
+       DQF(J/mol)   = 9.5228d3   -12.9377 T_K
+
                                 | Make definitions for Kelsey & Powell (JMG, 2011) Zr melting relations. JADC, 2/6/12
 zr8L = 2 zrc                    | Zr-melt endmember
        DQF(J/mol) = 69e3  
@@ -289,8 +292,13 @@ cren  = 1 mgts + 1 kos - 1 jd
        DQF(J/mol) = 3d3 
 oen   = 1 mgts + 1 acm - 1 jd
        DQF(J/mol) = -15d3 + 0.15 * p_bar
-odi   = 1 di
-       DQF(J/mol) = -100 + 0.211 * T + 0.005 * P | dqf_T corrected from 2.11, ECRG 9/18
+|odi   = 1 di
+|       DQF(J/mol) = -100 + 0.211 * T + 0.005 * P | dqf_T corrected from 2.11, ECRG 9/18
+odi  = 1 di
+                                  | prior to 13/7/20: -100 + 0.211 * T + 0.005 * P
+                                  | updated by ECRG, 13/7/20
+        DQF = 2800 + 0.005 * P    | changed from DQF = 1900 + 0.005 * P by DB to match ECRG 10/20 revision
+
                                   | Make definitions for Jennings and Holland, J Pet, 56:869-892, 2015 melt
 qjL = 2 qL
        DQF(J/mol) = 4d3     - 0.43 * p_bar 
@@ -355,22 +363,24 @@ isp   = 1 nsp
        DQF(J/mol) = 23.6d3  - 5.76303 * T
 iherc = 1 nherc
        DQF(J/mol) = 23.6d3  - 5.76303 * T
-imt   = 1 mt 
-       DQF(J/mol) = 300 
+imt   = 1 mt                      | changed to 30000 Aug 11, 2020, reverted to 
+                                  | original value, DB, Dec 2, 2020.
+       DQF(J/mol) = 300
       |---------------------------  Cpx
 cessh = 1 cats + 1 acm - 1 jd
        DQF = -3450 
 crdih = 1 cats + 1 kos - 1 jd
        DQF = -4900
 mcbuf = 1 cats + 1/2 per + 1/2 ru -1/2 cor
-       DQF = 1750 - 1.2 * T - 0.005 * P | corrected from -1750 ... 10/22/2019, Lisa Rummel, Mainz.
+                                           | corrected from -1750 ... 10/22/2019, Lisa Rummel, Mainz
+       DQF = -16.2d3 - 1.2 * T - 0.005 * P | changed from DQF = 1750 - 1.2 * T - 0.005 * P by DB to match 10/20 ECRG revision
 kjdh  = 1 jd + 1 san - 1 abh
-       DQF = -3750 + 1.189 * P
+       DQF = 11.7d3 + 0.6 * P              | changed from DQF = -3750 + 1.189 * P by DB to match 10/20 ECRG revision
       |---------------------------  Opx, odi as in JH
 crenh = 1 mgts + 1 kos - 1 jd
       DQF = -25900 + 15.5 * T + 0.05 * P
 obuf = 1 mgts + 1/2 per + 1/2 ru - 1/2 cor
-      DQF = 3350 - 5.1 * T - 0.0061 * P    
+       DQF = -5000 - 5.1 * T - 0.0061 * P  |changed from DQF = 3350 - 5.1 * T - 0.0061 * Pby DB to match 10/20 ECRG revision
 macm = 1 mgts + 1 acm - 1 jd
       DQF = 4800 - 0.089 * P
 ojd  = 1 jd
@@ -411,6 +421,54 @@ ekWL = 1/2 eskL
    dqf =  24.75d3   + 0.245*Pbar
 tiWL = 1 ruL
    dqf =  5.6d3     - 0.489*Pbar
+
+|--------------------------------------------------------------------------------
+                                  | Make definitions for Tomlinson and Holland; JPet, 2021 (TH models)
+                                  | Entered by Debaditya Bandyopadhyay, JADC 9/22
+      |---------------------------  Melt
+qTHL = 3 qL
+       DQF(J/mol) =  0.47d3   - 0.078*Pbar
+foTHL = 2 foL
+       DQF(J/mol) = 9.73d3    - 0.176*Pbar
+faTHL = 2 faL
+       DQF(J/mol) = 16.52d3    - 0.034*Pbar
+neTHL = 1 abL - 2 qL
+       DQF(J/mol) =  33.11d3  + 0.306*Pbar
+hmTHL = 1/2 hemL
+       DQF(J/mol) =  3.76d3    - 0.027*Pbar
+ekTHL = 1/2 eskL
+       DQF(J/mol) =  24.98d3  + 0.170*Pbar
+tiTHL = 1 ruL
+       DQF(J/mol) =  0.42d3   - 0.257*Pbar
+kjTHL = 1 kspL - 1 qL
+       DQF(J/mol) =  22.93d3  + 0.292*Pbar
+      |---------------------------  Spinel
+      | iherc and imt as in Sp(HGP)
+ispTH   = 1 nsp
+       DQF(J/mol) = 23.5d3  - 5.76303 * T
+      |---------------------------  Garnet
+tigTH   = 1 py + 1/2 per + 1/2 ru - 1/2 cor
+       DQF(J/mol) = 53.5d3  - 17.3 * T
+      |---------------------------  Opx
+      | odi as in Opx(HGP)
+crenTH = 1 mgts + 1 kos - 1 jd
+       DQF(J/mol) = -31850 + 15.5 * T + 0.05 * P
+obufTH = 1 mgts + 1/2 per + 1/2 ru - 1/2 cor
+       DQF(J/mol) = 4350 - 5.1 * T - 0.0061 * P
+macmTH = 1 mgts + 1 acm - 1 jd
+       DQF(J/mol) = 2630 - 0.089 * P
+ojdTH  = 1 jd
+       DQF(J/mol) = 18840 - 0.043 * P
+      |---------------------------  Cpx
+      | cenjh, cfsg as in Cpx(HGP)
+cessTH = 1 cats + 1 acm - 1 jd
+       DQF(J/mol) = -5810
+crdiTH = 1 cats + 1 kos - 1 jd
+       DQF(J/mol) = -5660
+mcbufTH = 1 cats + 1/2 per + 1/2 ru -1/2 cor
+       DQF(J/mol) = -6.47d3 - 1.2 * T + 0.078 * P 
+kjdTH = 1 jd + 1 san - 1 abh
+       DQF(J/mol) = -4d3 + 1.35 * P  
 
 end_makes
  
@@ -2154,6 +2212,13 @@ b1 = .279E-4  b5 = 444.6488  b6 = 2230000  b7 = -.18E-5  b8 = 4.04
 transition = 1  type = 4  t1 = 955  t2 = 15.6  
 end
 
+hem_nol   EoS = 8 | H=  -825420.0
+FeO(2)O2(.5)
+GH = -851478.3  S0 = 87.4  V0 = 3.027  
+c1 = 163.9  c3 = -2257200  c5 = -657.6  
+b1 = .279E-4  b5 = 444.6488  b6 = 2230000  b7 = -.18E-5  b8 = 4.04
+end
+
  
 esk       EoS = 8 | H=  -1128170.
 Cr2O3(1)
@@ -2528,7 +2593,6 @@ H2O       EoS = 101 | H=  -241810.0
 H2O(1)
 GH = -298100.7  S0 = 188.8  
 c1 = 40.1  c2 = .8656E-2  c3 = 487500  c5 = -251.2  
-b5 = 153.3154  
 end
 
  
@@ -2536,7 +2600,6 @@ CO2       EoS = 102 | H=  -393510.0
 CO2(1)
 GH = -457224.7  S0 = 213.7  
 c1 = 87.8  c2 = -.2644E-2  c3 = 706400  c5 = -998.9  
-b5 = 136.9325  
 end
 
  
@@ -2544,7 +2607,6 @@ CO        EoS = 103 | H=  -110530.0
 O2(-.5)CO2(1)
 GH = -169465.3  S0 = 197.67  
 c1 = 45.7  c2 = -.97E-4  c3 = 662700  c5 = -414.7  
-b5 = 101.0306  
 end
 
  
@@ -2552,7 +2614,6 @@ CH4       EoS = 104 | H=  -74810.00
 O2(-2)H2O(2)CO2(1)
 GH = -130343.4  S0 = 186.26  
 c1 = 150.1  c2 = .2063E-2  c3 = 3427700  c5 = -2650.4  
-b5 = 243.4313  
 end
 
  
@@ -2560,7 +2621,6 @@ O2        EoS = 107 | H=   0.000000
 O2(1)
 GH = -61180.38  S0 = 205.2  
 c1 = 48.3  c2 = -.691E-3  c3 = 499200  c5 = -420.7  
-b5 = 97.54219  
 end
 
  
@@ -2568,7 +2628,6 @@ H2        EoS = 105 | H=   0.000000
 O2(-.5)H2O(1)
 GH = -38968.2  S0 = 130.7  
 c1 = 23.3  c2 = .4627E-2  c5 = 76.3  
-b5 = 148.1543  
 end
 
  
@@ -2576,7 +2635,6 @@ S2        EoS = 1 | H=   128540.0
 S2(1)
 GH = 59667.35  S0 = 231  
 c1 = 37.1  c2 = .2398E-2  c3 = -161000  c5 = -65  
-b5 = 87.22322  
 end
 
  
@@ -2584,7 +2642,6 @@ H2S       EoS = 106 | H=  -20300.00
 O2(-.5)H2O(1)S2(.5)
 GH = -81650.32  S0 = 205.77  
 c1 = 47.4  c2 = .1024E-1  c3 = 615900  c5 = -397.8  
-b5 = 141.7566  
 end
 
  

@@ -3,9 +3,17 @@
 
 ###### Joshua B. Russell
 
-This wrapper is extremely limited in its capabilities and was built for the specific purpose of calculating seismic velocities (Vp, Vs) and density along desired geotherms. Simply input bulk composition, components of interest (and undesired endmembers, if any), and a temperature and pressure range over which to calculate the phase diagram. A P-T path is calculated assuming half-space cooling and used to extract physical properties from 3-D grid of (P,T,Z) values.
+This wrapper is extremely limited in its capabilities and was built for the specific purpose of calculating seismic velocities (Vp, Vs) and density along desired geotherms. Simply input bulk composition, components of interest (and undesired endmembers, if any), and a temperature and pressure range over which to calculate the phase diagram. A P-T path is calculated assuming half-space cooling and used to extract physical properties from 3-D grid of (P,T,Z) values, where Z = {Vp, Vs, Rho}.
 
-Although Perple_X includes thermodynamic parameters and solutions from many different studies, this wrapper has only been tested using the data and solution files from [Stixrude and Lithgow-Bertelloni (2011)](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-246X.2010.04890.x) ([stx11ver.dat](./data_files/stx11ver.dat), [stx11_solution_model.dat](./data_files/stx11_solution_model.dat)).
+Although Perple_X includes thermodynamic parameters and solutions from many different studies, this wrapper has only been tested using the data and solution files from the following:
+
+[Stixrude and Lithgow-Bertelloni (2011)](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-246X.2010.04890.x) 
+- [stx11ver.dat](./data_files/stx11ver.dat)
+- [stx11_solution_model.dat](./data_files/stx11_solution_model.dat)
+
+[Stixrude and Lithgow-Bertelloni (2021)](https://academic.oup.com/gji/article/228/2/1119/6375416) 
+- [stx21ver.dat](./data_files/stx21ver.dat)
+- [stx21_solution_model.dat](./data_files/stx21_solution_model.dat)
 
 The MATALB scripts are meant to be executed in alphanumeric order:
 - a1_run_Perple_X.m
@@ -18,11 +26,11 @@ The MATALB scripts are meant to be executed in alphanumeric order:
 
 
 #### Version info
-The codes were tested using Mac-OS-X 10.12.2
+The codes were tested using Mac-OS-X 10.15.7
 
-Data files: [Perple_X_6.8.7_data_files.zip](./_archive/Perple_X_6.8.7_data_files.zip)
+Data files: [Perple_X_6.9.1_data_files.zip](./_archive/Perple_X_6.9.1_data_files.zip)
 
-Executables: [Perple_X_6.8.7_OSX_O1_optimization_Intel64_core2duo_JS_Oct_22_2019.zip](./_archive/Perple_X_6.8.7_OSX_O1_optimization_Intel64_core2duo_JS_Oct_22_2019.zip)
+Executables: [Perple_X_7.0.7_OSX_Monterey_O3_optimization_Intel_64b_JS_Mar_7_2023.zip](./_archive/Perple_X_7.0.7_OSX_Monterey_O3_optimization_Intel_64b_JS_Mar_7_2023.zip)
 
 #### References
     Connolly JAD (1990) 

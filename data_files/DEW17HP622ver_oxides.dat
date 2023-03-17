@@ -1,5 +1,5 @@
 
- | for domcumentation of Perple_X thermodynamic data file structure and content refer to:
+ | for documentation of Perple_X thermodynamic data file structure and content refer to:
 
  | www.perplex.ethz.ch/perplex_thermodynamic_data_file.html
 
@@ -12,7 +12,7 @@
  | data with all DEW options left as specified in the online-version of the spreadsheet. To create a Perple_X data file 
  | with different DEW options or additional chemistry see the README_DEW_2_VER.zip archive in www.perplex.ethz.ch/perplex/faq.
 
- Harrison & Sverjensky DEW '17, Holland & Powell, JMG 2011 (TC-DS622)    |<= data base title
+Harrison & Sverjensky DEW '17, Holland & Powell, JMG 2011 (TC-DS622)    |<= data base title
 
 begin_standard_variables |<= name (<9 characters), reference value, tolerance
 P(bar)      1.00   0.1E-3
@@ -52,9 +52,9 @@ end_components
 
 begin_makes             
                                 | the make definitions segment of the thermodynamic
-                                | data file is preceeded by the "begin_makes" keyword,
+                                | data file is preceded by the "begin_makes" keyword,
                                 | and terminated by the "end_makes" keyword. Within 
-                                | this segment comments must be preceeded by a "|" 
+                                | this segment comments must be preceded by a "|" 
                                 | character. 
 
                                 | the make definitions define new thermodynamic entities
@@ -1466,7 +1466,7 @@ b1 = .328E-4 b5 = 509.0324 b6 = 513000 b7 = -.143E-4 b8 = 7.33
 end
 
  
-tan      EoS = 8 | H= -5900140. 
+tan      EoS = 8 | H= -5900140. a talc endmember for some T solution model
 MgO(3)SiO2(4)H2O(1)
 GH = -5977361 S0 = 259 V0 = 13.665  
 c1 = 622.2 c3 = -6385500 c5 = -3916.3  
@@ -1544,6 +1544,7 @@ GH = -5974211 S0 = 259 V0 = 13.665
 c1 = 622.2 c3 = -6385500 c5 = -3916.3  
 b1 = .18E-4 b5 = 566.5483 b6 = 430000 b7 = -.144E-4 b8 = 6.17  
 end
+
 
  
 fta      EoS = 8 | H= -4799750. 
@@ -2377,7 +2378,7 @@ b5 = 101.0306
 end
 
  
-CH4      EoS = 105 | H= -74810.00 
+CH4      EoS = 104 | H= -74810.00 
 O2(-2)H2O(2)CO2(1)
 GH = -130343.4 S0 = 186.26  
 c1 = 150.1 c2 = .2063E-2 c3 = 3427700 c5 = -2650.4  
@@ -2594,7 +2595,7 @@ end
 
 
 ACETIC-A EoS = 16 | Gf =  -396476. CH3COOH  Plyasunov & Shock (2001) 
-H2O(1.5)CO2(2)O2(-1.75) 
+H2O(2)CO2(2)O2(-2) 
 G0 = -396475.8  S0 = 178.6568  w = -31798.4  
 a1 = 4.8116  a2 = 2301.2  a3 = 6.98728  a4 = -120080.8  c1 = 187.8616  c2 = -110039.2  
 end
@@ -2650,7 +2651,7 @@ end
 
 
 CaCl2,aq EoS = 16 | Gf =  -811696. CaCl(0)  Sverjensky et al. (1997) with new V from the sum of a1 values of ions 
-CaO(1)Cl2(.5)O2(-.5) 
+CaO(1)Cl2(1)O2(-.5) 
 G0 = -811696  S0 = 25.104  w = -15899.2  
 a1 = 3.334397  a2 = 1382.603  a3 = 8.649583  a4 = -121988.7  c1 = 97.3349  c2 = 126758.5  
 end
@@ -2748,7 +2749,7 @@ end
 
 
 ETHANOL, EoS = 16 | Gf =  -181293. C2H5OH  Plyasunov & Shock (2001) 
-H2O(2.5)CO2(2)O2(-2.75) 
+H2O(3)CO2(2)O2(-3) 
 G0 = -181292.7  S0 = 150.2056  w = -85228.08  
 a1 = 3.863213  a2 = 4166.469  a3 = 50.81259  a4 = -133494.7  c1 = 251.1132  c2 = 6305.288  
 end
@@ -2839,7 +2840,7 @@ end
 
 
 FeO,aq   EoS = 16 | Gf =  -212212. FeO(0)  
-Fe(1)O2(.5) 
+FeO(1)
 G0 = -212212.5  S0 = -41.84  w = 125520  
 a1 = .940103  a2 = -896.9659  a3 = 27.76377  a4 = -112566.3  c1 = 37.36521  c2 = -126967.7  
 end
@@ -2853,14 +2854,14 @@ end
 
 
 FORMIC-A EoS = 16 | Gf =  -372301. HCOOH  Shock & Helgeson (1990) revised with new predicted a1 for complex species 
-H2O(.5)CO2(1)O2(-.25) 
+H2O(1)CO2(1)O2(-.5) 
 G0 = -372300.7  S0 = 162.7576  w = -144013.3  
 a1 = 3.385902  a2 = 1431.639  a3 = 8.238714  a4 = -122193.7  c1 = 92.853  c2 = -130524.1  
 end
 
 
 GLUTARAT EoS = 16 | Gf =  -714878. C5H7O4-  Shock & Helgeson (1990) revised with new predicted a1 for complex species 
-H2O(3.5)CO2(5)O2(-6.25) 
+H2O(3.5)CO2(5)O2(-4.75) 
 G0 = -714878.2  S0 = 221.3336  w = 346393.4  q = -1  
 a1 = 7.783037  a2 = 5618.159  a3 = -26.86512  a4 = -139498.8  c1 = 107.0221  c2 = 44415.74  
 end
@@ -2874,7 +2875,7 @@ end
 
 
 GLYCOLAT EoS = 16 | Gf =  -506975. C2H3O3-  Shock & Helgeson (1990) revised with new predicted a1 for complex species 
-H2O(1.5)CO2(2)O2(-2.25) 
+H2O(1.5)CO2(2)O2(-1.25) 
 G0 = -506975.3  S0 = 109.6208  w = 516054.6  q = -1  
 a1 = 2.819263  a2 = 5520.077  a3 = 7.74835  a4 = -139092.9  c1 = 89.28238  c2 = -71571.5  
 end
@@ -2884,6 +2885,13 @@ GLYCOLIC EoS = 16 | Gf =  -528858. C2H4O3  Shock & Helgeson (1990) revised with 
 H2O(2)CO2(2)O2(-1.5) 
 G0 = -528857.6  S0 = 180.3304  w = -126231.3  
 a1 = 4.78068  a2 = 2759.599  a3 = -2.896583  a4 = -127683.1  c1 = 125.7426  c2 = 260822.2  
+end
+
+
+H-SUCCIN EoS = 16 | Gf =  -719899. C4H5O4-  Shock & Helgeson (1990) revised with new predicted a1 for complex species 
+CO2(4)H2O(2.5)O2(-3.25) 
+G0 = -719899  S0 = 189.1168  w = 395220.6  q = -1  
+a1 = 6.51294  a2 = 4408.89  a3 = -16.72554  a4 = -134498.9  c1 = 85.01637  c2 = -47705.97  
 end
 
 
@@ -2905,6 +2913,13 @@ H2S,aq   EoS = 16 | Gf =   -27920. H2S(0)  Shock et al. (1989) with revised pred
 H2O(1)S2(.5)O2(-.5) 
 G0 = -27919.83  S0 = 125.52  w = -41840  
 a1 = 3.453599  a2 = 1496.073  a3 = 7.698142  a4 = -122457.3  c1 = 126.9769  c2 = 238090.5  
+end
+
+
+SO2      EoS = 108 | SO2,g    SUPCRT DATA       SULFUR-DIOXIDE            ref:6,8       
+O2(1)S2(.5)
+G0 = -300194. S0 = 248.237  
+c1 = 46.1914 c2 = .786592E-2 c3 = -769856  
 end
 
 
@@ -2937,14 +2952,14 @@ end
 
 
 HEXANE,A EoS = 16 | Gf =    18493. C6H14  Plyasunov & Shock (2001) for c1, c2 & omega; a1 predicted with new correlation for complex species from Sverjensky et 
-H2O(.5)CO2(6)O2(-6.25) 
+H2O(7)CO2(6)O2(-9.5) 
 G0 = 18493.28  S0 = 222.5888  w = -196648  
 a1 = 9.805162  a2 = 7543.417  a3 = -43.00817  a4 = -147456.7  c1 = 451.872  c2 = 962320  
 end
 
 
 HFeO2-   EoS = 16 | Gf =  -394970. HFeO2(-)  
-Fe(1)H2(.5)O2(1) 
+FeO(1)H2O(.5)O2(.25) 
 G0 = -394969.6  S0 = -62.76  w = 776675.9  q = -1  
 a1 = 2.633828  a2 = 715.5895  a3 = 14.24234  a4 = -119231.4  c1 = 151.2993  c2 = 60534.11  
 end
@@ -3021,7 +3036,7 @@ end
 
 
 LACTATE, EoS = 16 | Gf =  -512666. C3H5O3-  Shock & Helgeson (1990) revised with new predicted a1 for ions 
-H2O(2.5)CO2(3)O2(-3.75) 
+H2O(2.5)CO2(3)O2(-2.75) 
 G0 = -512665.5  S0 = 133.4696  w = 479863  q = -1  
 a1 = 3.555438  a2 = 8278.588  a3 = -.357732  a4 = -150498.5  c1 = 135.4796  c2 = 100587.5  
 end
@@ -3042,7 +3057,7 @@ end
 
 
 METHANOL EoS = 16 | Gf =  -175937. CH3OH  Plyasunov & Shock (2001) 
-H2O(1.5)CO2(1)O2(-1.25) 
+H2O(2)CO2(1)O2(-1.5) 
 G0 = -175937.2  S0 = 132.2144  w = -62760  
 a1 = 3.51456  a2 = 1715.44  a3 = -1.00416  a4 = -59831.2  c1 = 143.9296  c2 = 40166.4  
 end
@@ -3224,7 +3239,7 @@ end
 
 
 PROPANOL EoS = 16 | Gf =  -175351. C3H7OH  Plyasunov & Shock (2001) 
-H2O(3.5)CO2(3)O2(-4.25) 
+H2O(4)CO2(3)O2(-4.5) 
 G0 = -175351.4  S0 = 169.8704  w = -83680  
 a1 = 6.10864  a2 = 3807.44  a3 = 51.0448  a4 = -230120  c1 = 310.8712  c2 = 138072  
 end
