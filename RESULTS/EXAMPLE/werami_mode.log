@@ -90,7 +90,7 @@ Enter 1 or 2:
 Enter the file name:
 
 
-File contains   107 points
+File contains   108 points
 every nth plot will be plotted, enter n:
 
 
@@ -141,9 +141,9 @@ Output cumulative modes (y/n)?
 
 Data ranges excluding values equal to bad_number (       NaN) specified in perplex_option.dat:
 
-     Cpx            Cpx            O              Pl             Pl             qtz            Sp             Opx            Gt             C2/c           Ring          
-min    13.3061       0.100000E+100   54.4643       0.642256       0.100000E+100   7.76960        4.69387        6.60657        12.8401       0.100000E+100  0.100000E+100
-max    18.3776      -0.100000E+100   70.0284        3.99977      -0.100000E+100   7.76960        4.93733        24.5456        15.7645      -0.100000E+100 -0.100000E+100
+     Cpx            Cpx            O              Sp             Pl             Pl             qtz            Opx            Gt             C2/c           Ring          
+min    13.2109       0.100000E+100   54.4647        4.69599       0.651169       0.100000E+100   7.73749        6.60497        12.8304       0.100000E+100  0.100000E+100
+max    18.3914      -0.100000E+100   70.0385        4.93681        4.15291      -0.100000E+100   7.78421        24.5453        15.7633      -0.100000E+100 -0.100000E+100
 
 Output has been written to two files:
 

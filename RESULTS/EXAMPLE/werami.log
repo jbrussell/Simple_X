@@ -138,7 +138,7 @@ Select the grid resolution (to use an arbitrary grid set sample_on_grid to F):
 
 
 
-**warning ver180** at T(K)=   738.5     P(bar)=   1.000    
+**warning ver180** at T(K)=   743.6     P(bar)=   1.000    
 the poisson ratio of: qtz            is negative.
 
 the suspect data will be output and used to compute aggregate properties.
@@ -154,7 +154,7 @@ Data ranges excluding values equal to bad_number (       NaN) specified in perpl
 
      rho,kg/m3     
 min    3088.46     
-max    3602.79     
+max    3609.38     
 
 Output has been written to the 2d tab format file: stx21_1.tab                                                                                         
 

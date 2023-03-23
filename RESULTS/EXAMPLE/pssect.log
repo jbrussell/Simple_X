@@ -51,7 +51,10 @@ See: www.perplex.ethz.ch/perplex_plot_options.html
 
 PostScript will be written to file: stx21.ps                                                                                            
 Modify the default plot (y/n)?
-There are  25 fields for: Opx Cpx Cpx O Gt C2/c
-There are  84 fields for: Opx Cpx O Gt C2/c
-There are  30 fields for: Opx Cpx O Sp Gt
+There are  16 fields for: Opx Cpx O Sp Pl Pl
+There are  23 fields for: Opx Cpx Cpx O Gt C2/c
+There are  35 fields for: Opx Cpx O Sp Gt
+There are  73 fields for: Opx Cpx O Gt C2/c
+There are  11 fields for: Opx Cpx O Sp Pl qtz
 There are  12 fields for: Opx Cpx O Pl Pl qtz
+There are   2 fields for: Opx Cpx O Pl qtz

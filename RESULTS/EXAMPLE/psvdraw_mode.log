@@ -82,9 +82,9 @@ program/routine: PSCURV/PSVDRAW
 Modify default axes numbering (y/n)?
 
 Enter the starting value and interval for major tick marks on
-the X-axis ( current values are:  386.      265.    )
+the X-axis ( current values are:  354.      271.    )
 Enter the new values:
 
 Enter the starting value and interval for major tick marks on
-the Y-axis ( current values are: 0.642      13.9    )
+the Y-axis ( current values are: 0.651      13.9    )
 Enter the new values:

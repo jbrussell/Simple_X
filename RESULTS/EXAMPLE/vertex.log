@@ -155,16 +155,16 @@ C2/c       Pl         Sp         O          Ring       Opx        Cpx        Gt
 --------------------------------------------------------------------------------
 Exploratory stage generated:
 
-      11 compositions for: C2/c      
-      40 compositions for: Pl        
-      22 compositions for: Sp        
-      16 compositions for: O         
-      10 compositions for: Ring      
-     162 compositions for: Opx       
-     263 compositions for: Cpx       
-     249 compositions for: Gt        
+      14 compositions for: C2/c      
+      38 compositions for: Pl        
+      24 compositions for: Sp        
+      19 compositions for: O         
+      15 compositions for: Ring      
+     158 compositions for: Opx       
+     251 compositions for: Cpx       
+     259 compositions for: Gt        
 
-Total number of compositions:     773
+Total number of compositions:     778
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 ** Starting auto-refine computational stage **
@@ -292,50 +292,51 @@ Total number of compositions:     773
 
 Beginning grid refinement stage.
 
-   787 grid cells to be refined at grid level 2
+   826 grid cells to be refined at grid level 2
        ...working (   501 minimizations done)
        ...working (  1002 minimizations done)
        ...working (  1504 minimizations done)
-       refinement at level 2 involved   1647 minimizations
- 16047 minimizations required of the theoretical limit of   57121
-  1503 grid cells to be refined at grid level 3
-       ...working (   359 minimizations done)
-       ...working (   860 minimizations done)
-       ...working (  1362 minimizations done)
-       ...working (  1863 minimizations done)
-       ...working (  2364 minimizations done)
-       ...working (  2865 minimizations done)
-       refinement at level 3 involved   3028 minimizations
- 19075 minimizations required of the theoretical limit of  227529
-  3100 grid cells to be refined at grid level 4
-       ...working (   339 minimizations done)
-       ...working (   840 minimizations done)
-       ...working (  1342 minimizations done)
-       ...working (  1843 minimizations done)
-       ...working (  2346 minimizations done)
-       ...working (  2847 minimizations done)
-       ...working (  3349 minimizations done)
-       ...working (  3851 minimizations done)
-       ...working (  4353 minimizations done)
-       ...working (  4854 minimizations done)
-       ...working (  5357 minimizations done)
-       ...working (  5859 minimizations done)
-       refinement at level 4 involved   6220 minimizations
- 25295 minimizations required of the theoretical limit of  910116
+       refinement at level 2 involved   1734 minimizations
+ 16134 minimizations required of the theoretical limit of   57121
+  1562 grid cells to be refined at grid level 3
+       ...working (   271 minimizations done)
+       ...working (   773 minimizations done)
+       ...working (  1275 minimizations done)
+       ...working (  1777 minimizations done)
+       ...working (  2278 minimizations done)
+       ...working (  2780 minimizations done)
+       refinement at level 3 involved   3133 minimizations
+ 19267 minimizations required of the theoretical limit of  227529
+  3209 grid cells to be refined at grid level 4
+       ...working (   149 minimizations done)
+       ...working (   650 minimizations done)
+       ...working (  1152 minimizations done)
+       ...working (  1655 minimizations done)
+       ...working (  2156 minimizations done)
+       ...working (  2658 minimizations done)
+       ...working (  3160 minimizations done)
+       ...working (  3662 minimizations done)
+       ...working (  4163 minimizations done)
+       ...working (  4665 minimizations done)
+       ...working (  5166 minimizations done)
+       ...working (  5667 minimizations done)
+       ...working (  6168 minimizations done)
+       refinement at level 4 involved   6419 minimizations
+ 25686 minimizations required of the theoretical limit of  910116
 --------------------------------------------------------------------------------
      Timing                    min.         % of total
 
-  Static G calculation       0.44550E-01         2.0
-  Dynamic G calculation      0.54908            24.2
-  Static LP                  0.28055E-01         1.2
-  Dynamic LP                 0.38616            17.0
-  Successive QP               1.1888            52.4
-  Total of above              2.1967            96.9
-  Total elapsed time          2.2668           100.0
+  Static G calculation       0.46715E-01         2.0
+  Dynamic G calculation      0.57009            24.3
+  Static LP                  0.31009E-01         1.3
+  Dynamic LP                 0.39241            16.8
+  Successive QP               1.2278            52.4
+  Total of above              2.2680            96.8
+  Total elapsed time          2.3425           100.0
 --------------------------------------------------------------------------------
 
 End of job: stx21                                                                                               
 
 --------------------------------------------------------------------------------
 
-    42077415
+    41062587

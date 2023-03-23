@@ -54,8 +54,8 @@ set(gcf,'color','w');
 plot(T_K_path,P_GPa_path,'-r','linewidth',2);
 xlabel('T (K)');
 ylabel('P (GPa)');
-xlim([min(x(:)) max(x(:))])
-ylim([min(y(:)) max(y(:))]/10000)
+xlim([min(T_perplex(:)) max(T_perplex(:))])
+ylim([min(P_perplex(:)) max(P_perplex(:))])
 cb = colorbar;
 ylabel(cb, zname);
 colormap(flip(parula))
@@ -65,7 +65,8 @@ set(gca,'fontsize',FS,'linewidth',1,'TickDir','out','YDir','reverse');
 
 
 % Extract property along the defined T-P path
-[ P,T,Z,depth ] = extract_PTpath( P_GPa_path,T_K_path,depth_m_path,P_perplex,T_perplex,Z_perplex );
+[ P,T,Z,~ ] = extract_PTpath( P_GPa_path,T_K_path,[],P_perplex,T_perplex,Z_perplex );
+depth = depth_m_path;
 
 % %%
 %plot inline

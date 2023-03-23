@@ -1,0 +1,138 @@
+clear; close all;
+% Plot physical properties output from Perple_X (a1) along a desired
+% half-space cooling P-T path and it to text file for input for b1.
+%
+% JBR - 11/19
+%% ===================================================================== %%
+%                               USER INPUT                                %
+%  =====================================================================  %
+% Physical property of interest
+prop = 'vs';
+
+%  =====================================================================  %
+%                             END USER INPUT                              %
+%  =====================================================================  %
+%% Paths
+setup_parameters;
+PROJ_path = parameters.PROJ_path;
+thermo_dat = parameters.thermo_dat;
+age = parameters.age_Ma;
+Tp = parameters.Tp_C;
+z_plate = parameters.z_plate;
+modeltype = parameters.modeltype;
+z_max_km = parameters.z_max_km;
+
+%% Setup limits
+if strcmpi(prop,'vs')
+    clims = [4 5];
+elseif strcmpi(prop,'vp')
+    clims = [7 9];
+elseif strcmpi(prop,'rho')
+    clims = [3000 4600];
+end
+
+%% Load data
+path2tab = [PROJ_path,thermo_dat,'_',prop,'.tabs'];
+[x,y,z,xname,yname,zname,nvar,mvar,nrow,dnames,titl] = load_perple_x_tab(path2tab);
+T_perplex=x; P_perplex=y/10000; Z_perplex=z;
+
+%% Convert Pressure to Depth using density
+path2tab_rho = [PROJ_path,thermo_dat,'_','rho','.tabs'];
+[~,~,rho_perplex,~,~,~,~,~,~,~,~] = load_perple_x_tab(path2tab_rho);
+[depth_m_perplex] = invert_P_rho_for_depth(P_perplex,rho_perplex,T_perplex);
+
+%% Interpolate Depth, Pressure, Prop to evenly spaced grid
+% dr = min(min(abs(diff(depth_m_perplex,1))));
+% depth_int = [max(depth_m_perplex(1,:)) : dr : min(depth_m_perplex(end,:))]';
+% depth_m_perplex_int = repmat(depth_int,1,size(depth_m_perplex,2));
+% Nint = length(depth_int);
+% 
+% T_perplex_int = repmat(T_perplex(1,:),Nint,1);
+% P_perplex_int = griddata(depth_m_perplex,T_perplex,P_perplex,depth_m_perplex_int,T_perplex_int);
+% Z_perplex_int = griddata(depth_m_perplex,T_perplex,Z_perplex,depth_m_perplex_int,T_perplex_int);
+% rho_perplex_int = griddata(depth_m_perplex,T_perplex,rho_perplex,depth_m_perplex_int,T_perplex_int);
+
+%% Calculate HSC Temperature and Pressure
+vel_spread_cmyr = 5; % [cm/yr] spreading rate
+if strcmpi(modeltype,'hsc')
+    [ depth_m_path,T_K_path,P_GPa_path,density_path ] = calc_HSC( Tp+273,age,vel_spread_cmyr,z_max_km );
+elseif strcmpi(modeltype,'plate')
+    [ depth_m_path,T_K_path,P_GPa_path,density_path ] = calc_platecooling( Tp+273,age,vel_spread_cmyr,z_max_km,z_plate );
+end
+
+%% PLOT
+% %%
+%plot inline
+FS = 14;
+figure(1); clf;
+set(gcf,'color','w');
+[C,h] = contourf(T_perplex,depth_m_perplex/1000,Z_perplex,50,'LineStyle','none'); hold on;
+plot(T_K_path,depth_m_path/1000,'-r','linewidth',2);
+xlabel('T (K)');
+ylabel('Depth (km)');
+xlim([min(T_perplex(:)) max(T_perplex(:))])
+ylim([min(depth_m_perplex(:)) max(depth_m_perplex(:))]/1000)
+cb = colorbar;
+ylabel(cb, zname);
+colormap(flip(parula))
+caxis(clims);
+set(cb,'LineWidth',1,'fontsize',FS);
+set(gca,'fontsize',FS,'linewidth',1,'TickDir','out','YDir','reverse');
+
+
+% Extract property along the defined T-P path
+[ P,T,Z,~ ] = extract_PTpath( P_GPa_path,T_K_path,[],P_perplex,T_perplex,Z_perplex );
+% Z = griddata(depth_m_perplex,T_perplex,Z_perplex,depth_m_path,T_K_path);
+depth = depth_m_path;
+
+% %%
+%plot inline
+figure(2); clf;
+set(gcf,'color','w');
+subplot(1,2,1);
+plot(T,depth/1000,'-r','linewidth',2); hold on;
+xlabel('T (K)');
+ylabel('Depth (km)');
+ylim([0 max(depth/1000)]);
+xlim([min(T) max(T)]);
+title([num2str(age),' Ma; ',num2str(Tp),' \circ','C']);
+set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse');
+grid on;
+
+subplot(1,2,2);
+plot(Z,depth/1000,'-k','linewidth',2); hold on;
+xlabel(zname);
+ylim([0 max(depth/1000)]);
+xlim([min(Z)*0.99 max(Z)*1.01]);
+set(gca,'fontsize',FS,'linewidth',1,'TickDir','in','YDir','reverse');
+grid on;
+
+if ~exist([PROJ_path,'figs/'])
+    mkdir([PROJ_path,'figs/']);
+end
+export_fig(1,[PROJ_path,'figs/a2_TP_',prop,'.pdf'],'-pdf','-painters');
+save2pdf([PROJ_path,'figs/a2_',prop,'_profile_',num2str(age),'Ma.pdf'],2,100);
+
+%% Save T-P path in text file
+% %%
+filename = [PROJ_path,'TP_HSC_',num2str(age),'Ma_Tp',num2str(Tp),'.dat'];
+fid = fopen(filename,'w');
+for ii = 1:length(T)
+    fprintf(fid,'%10f    %10f\n',T(ii),P(ii)*10000);
+end
+fclose(fid);
+
+%% Save mat file
+% %%
+if ~exist([PROJ_path,'matout/'])
+    mkdir([PROJ_path,'matout/']);
+end
+if strcmpi(prop,'vp')
+    vp = Z;
+elseif strcmpi(prop,'vs')
+    vs = Z;
+elseif strcmpi(prop,'rho')
+    rho = Z;
+end
+matout = [PROJ_path,'matout/',prop,'_TP_',modeltype,'_',num2str(age),'Ma_Tp',num2str(Tp),'.mat'];
+save(matout,'T','P',lower(prop),'depth');
