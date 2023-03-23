@@ -9,7 +9,7 @@ parameters.workingDir = [pwd,'/']; % Current folder
 parameters.PROJ = 'EXAMPLE';
 
 % Define temperature and pressure range over which to calculate
-parameters.Trange = [100 1600]+273; % [K]
+parameters.Trange = [0 1600]+273; % [K]
 % Pressure range (Don't use zero! Causes code to hang)
 parameters.Prange = [1*1e-4 8.75]*1e4; % [bar] (1 GPa = 10,000 bars)
 
